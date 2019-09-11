@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">MyDemoApplication</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="login_screen_title">Login</string>
+    <string name="login_screen_username_hint">Enter Username</string>
+    <string name="login_screen_password_hint">Enter Password</string>
 </resources>

@@ -8,4 +8,9 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="LoginScreenTitleText">
+        <item name="android:textSize">@dimen/login_screen_title_text_size</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
 </resources>
