@@ -1,11 +1,12 @@
 package com.example.mydemoapplication.dagger
 
-import com.example.mydemoapplication.MainActivity
+import com.example.mydemoapplication.LoginFragment
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
 
 @Module
-abstract class ActivityBuilderModule {
+abstract class MainFragmentBuilderModule {
+
     @ContributesAndroidInjector
-    abstract fun mainActivity(): MainActivity
+    abstract fun contributesLoginFragment(): LoginFragment
 }
