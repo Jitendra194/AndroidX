@@ -15,10 +15,11 @@ import androidx.lifecycle.get
 import com.example.mydemoapplication.databinding.FragmentLoginBinding
 import com.example.mydemoapplication.viewmodel_factory.ViewModelProviderFactory
 import dagger.android.AndroidInjection
+import dagger.android.support.AndroidSupportInjection
 import dagger.android.support.DaggerFragment
 import javax.inject.Inject
 
-class LoginFragment : Fragment() {
+class LoginFragment : DaggerFragment() {
 
     @Inject
     lateinit var viewModelProviderFactory: ViewModelProviderFactory

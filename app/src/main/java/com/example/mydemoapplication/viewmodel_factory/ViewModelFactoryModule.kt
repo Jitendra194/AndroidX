@@ -4,6 +4,7 @@ import androidx.lifecycle.ViewModelProvider
 import dagger.Binds
 import dagger.Module
 
+@Suppress("unused")
 @Module
 abstract class ViewModelFactoryModule {
     @Binds
