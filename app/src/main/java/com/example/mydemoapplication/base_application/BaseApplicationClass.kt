@@ -1,7 +1,10 @@
 package com.example.mydemoapplication.base_application
 
-import android.app.Application
+import com.example.mydemoapplication.dagger.DaggerBaseApplicationComponent
+import dagger.android.AndroidInjector
+import dagger.android.support.DaggerApplication
 
-class BaseApplicationClass : Application() {
-
+class BaseApplicationClass : DaggerApplication() {
+    override fun applicationInjector(): AndroidInjector<out DaggerApplication> =
+        DaggerBaseApplicationComponent.builder().application(this).build()
 }
