@@ -1,2 +1,2 @@
-include ':app'
+include ':app', ':create_account_module'
 rootProject.name='MyDemoApplication'

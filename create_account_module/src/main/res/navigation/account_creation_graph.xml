@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/account_creation_graph"
+    app:startDestination="@+id/enterUserDetailsFragment">
+
+    <fragment
+        android:id="@+id/enterUserDetailsFragment"
+        android:name="com.example.createaccount.views.EnterUserDetailsFragment"
+        android:label="EnterUserDetailsFragment" />
+</navigation>

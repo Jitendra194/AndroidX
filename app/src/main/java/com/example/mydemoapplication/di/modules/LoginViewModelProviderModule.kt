@@ -1,7 +1,8 @@
-package com.example.mydemoapplication.viewmodel_factory
+package com.example.mydemoapplication.di.modules
 
 import androidx.lifecycle.ViewModel
 import com.example.mydemoapplication.LoginViewModel
+import com.example.mydemoapplication.di.viewmodel_factory.ViewModelKey
 import dagger.Binds
 import dagger.Module
 import dagger.multibindings.IntoMap
