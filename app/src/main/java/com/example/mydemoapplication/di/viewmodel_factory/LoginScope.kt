@@ -1,4 +1,4 @@
-package com.example.mydemoapplication.viewmodel_factory
+package com.example.mydemoapplication.di.viewmodel_factory
 
 import javax.inject.Scope
 
