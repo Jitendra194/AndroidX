@@ -1,7 +1,7 @@
 package com.example.mydemoapplication.base_application
 
-import com.example.mydemoapplication.di.BaseApplicationComponent
-import com.example.mydemoapplication.di.DaggerBaseApplicationComponent
+import com.example.mydemoapplication.di.components.BaseApplicationComponent
+import com.example.mydemoapplication.di.components.DaggerBaseApplicationComponent
 import com.google.android.play.core.splitcompat.SplitCompatApplication
 import dagger.android.AndroidInjector
 import dagger.android.DispatchingAndroidInjector

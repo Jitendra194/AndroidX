@@ -1,4 +1,4 @@
-package com.example.mydemoapplication.di
+package com.example.mydemoapplication.di.components
 
 import com.example.mydemoapplication.base_application.BaseApplicationClass
 import com.example.mydemoapplication.di.modules.ActivityBuilderModule

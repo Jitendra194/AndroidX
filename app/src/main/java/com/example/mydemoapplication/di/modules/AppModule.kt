@@ -1,11 +1,8 @@
 package com.example.mydemoapplication.di.modules
 
-import androidx.lifecycle.ViewModelProvider
-import com.example.mydemoapplication.LoginViewModel_Factory
 import com.example.mydemoapplication.base_application.BaseApplicationClass
-import com.example.mydemoapplication.di.viewmodel_factory.ViewModelProviderFactory
-import com.example.mydemoapplication.feature_package.FeatureManager
 import com.example.mydemoapplication.feature_package.AccountCreationFeature
+import com.example.mydemoapplication.feature_package.FeatureManager
 import dagger.Module
 import dagger.Provides
 import javax.inject.Singleton
