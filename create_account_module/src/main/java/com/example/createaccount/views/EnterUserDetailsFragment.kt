@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.observe
 import com.example.createaccount.R
@@ -19,15 +20,14 @@ class EnterUserDetailsFragment : DaggerFragment() {
     @Inject
     lateinit var viewModelProviderFactory: ViewModelProviderFactory
 
-    private lateinit var userDetailsViewModel: EnterUserDetailsViewModel
     private lateinit var binding: FragmentEnterUserDetailsBinding
+
+    private val userDetailsViewModel: EnterUserDetailsViewModel by viewModels<EnterUserDetailsViewModel> { viewModelProviderFactory }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        userDetailsViewModel =
-            ViewModelProvider(this, viewModelProviderFactory)[EnterUserDetailsViewModel::class.java]
         binding = DataBindingUtil.inflate(
             inflater,
             R.layout.fragment_enter_user_details,

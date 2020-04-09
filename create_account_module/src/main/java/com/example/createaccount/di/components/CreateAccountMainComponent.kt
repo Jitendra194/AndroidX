@@ -1,16 +1,12 @@
 package com.example.createaccount.di.components
 
-import com.example.createaccount.AccountCreationFeatureImpl
+import com.example.createaccount.featureImpl.AccountCreationFeatureImpl
 import com.example.createaccount.di.modules.CreateAccountMainModule
-import com.example.mydemoapplication.di.viewmodel_factory.LoginScope
 import com.example.mydemoapplication.feature_package.AccountCreationFeature
 import dagger.BindsInstance
 import dagger.Component
 import dagger.android.AndroidInjector
-import javax.inject.Singleton
 
-
-@LoginScope
 @Component(
     modules = [CreateAccountMainModule::class],
     dependencies = [AccountCreationFeature.Dependencies::class]

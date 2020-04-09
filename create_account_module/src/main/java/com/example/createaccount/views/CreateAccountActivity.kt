@@ -3,7 +3,7 @@ package com.example.createaccount.views
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.example.createaccount.R
-import com.example.createaccount.createAccountMainComponent
+import com.example.createaccount.featureImpl.createAccountMainComponent
 import dagger.android.AndroidInjector
 import dagger.android.DispatchingAndroidInjector
 import dagger.android.HasAndroidInjector

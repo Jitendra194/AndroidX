@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/pillsFragment"
+        android:checked="true"
+        android:icon="@drawable/ic_pills_order"
+        android:orderInCategory="1"
+        android:title="@string/title_pills_module" />
+    <item
+        android:id="@+id/labReportsFragment"
+        android:icon="@drawable/ic_lab_reports_schedule"
+        android:orderInCategory="2"
+        android:title="@string/lab_reports" />
+
+    <item
+        android:id="@+id/prescriptionsFragment"
+        android:icon="@drawable/ic_prescriptions"
+        android:orderInCategory="3"
+        android:title="@string/my_prescriptions" />
+
+    <item
+        android:id="@+id/wellnessTipsFragment"
+        android:icon="@drawable/ic_wellness_tips"
+        android:orderInCategory="4"
+        android:title="@string/wellness_tips" />
+</menu>

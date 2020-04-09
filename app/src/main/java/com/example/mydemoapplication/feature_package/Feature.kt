@@ -30,6 +30,29 @@ interface Feature<T> {
 interface AccountCreationFeature : Feature<AccountCreationFeature.Dependencies> {
     interface Dependencies {
         val application: BaseApplicationClass
-        val string: String
+    }
+}
+
+interface PillsFeature : Feature<PillsFeature.Dependencies> {
+    interface Dependencies {
+        val application: BaseApplicationClass
+    }
+}
+
+interface LabReportsFeature : Feature<LabReportsFeature.Dependencies> {
+    interface Dependencies {
+        val application: BaseApplicationClass
+    }
+}
+
+interface PrescriptionsFeature : Feature<PrescriptionsFeature.Dependencies> {
+    interface Dependencies {
+        val application: BaseApplicationClass
+    }
+}
+
+interface WellnessTipsFeature : Feature<WellnessTipsFeature.Dependencies> {
+    interface Dependencies {
+        val application: BaseApplicationClass
     }
 }

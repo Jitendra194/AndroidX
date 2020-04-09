@@ -1,6 +1,7 @@
 package com.example.mydemoapplication.views
 
 import android.os.Bundle
+import androidx.activity.viewModels
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import com.example.mydemoapplication.R
@@ -19,13 +20,10 @@ class MainActivity : DaggerAppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = DataBindingUtil.setContentView(this,
-            R.layout.activity_main
-        )
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
         viewModel = ViewModelProvider(this, viewModelProviderFactory)[LoginViewModel::class.java]
 
-        binding.launchCreateAccount.setOnClickListener {
-            startActivity(viewModel.test())
-        }
+        binding.launchCreateAccount.setOnClickListener { startActivity(viewModel.launchSignupScreen()) }
+        binding.loginButton.setOnClickListener { startActivity(viewModel.launchHQ()) }
     }
 }

@@ -10,5 +10,5 @@ import dagger.android.ContributesAndroidInjector
 abstract class CreateAccountFragmentBuilderModule {
 
     @ContributesAndroidInjector(modules = [ViewModelProviderModule::class])
-    abstract fun contributesTestFragment(): EnterUserDetailsFragment
+    abstract fun contributesEnterUserDetailsFragment(): EnterUserDetailsFragment
 }
