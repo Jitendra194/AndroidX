@@ -1,6 +1,6 @@
 apply plugin: 'com.android.dynamic-feature'
-apply plugin: 'kotlin-kapt'
 apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-kapt'
 apply plugin: 'kotlin-android-extensions'
 
 android {
@@ -11,7 +11,6 @@ android {
         targetSdkVersion 29
         versionCode 1
         versionName "1.0"
-
     }
 
     kotlinOptions {
