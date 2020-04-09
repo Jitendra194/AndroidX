@@ -3,6 +3,7 @@ package com.example.mydemoapplication.di.components
 import com.example.mydemoapplication.base_application.BaseApplicationClass
 import com.example.mydemoapplication.di.modules.ActivityBuilderModule
 import com.example.mydemoapplication.di.modules.AppModule
+import com.example.mydemoapplication.di.modules.FeaturesModule
 import com.example.mydemoapplication.di.modules.ViewModelFactoryModule
 import com.example.mydemoapplication.feature_package.FeatureManager
 import com.example.mydemoapplication.feature_package.AccountCreationFeature
@@ -17,15 +18,11 @@ import javax.inject.Singleton
 @Component(
     modules = [AndroidInjectionModule::class,
         ActivityBuilderModule::class,
+        FeaturesModule::class,
         ViewModelFactoryModule::class,
         AppModule::class]
 )
-interface BaseApplicationComponent : AndroidInjector<BaseApplicationClass>,
-    AccountCreationFeature.Dependencies {
-
-    override val application: BaseApplicationClass
-    val accountCreationFeatureDependencies: AccountCreationFeature.Dependencies
-    val featureManager: FeatureManager
+interface BaseApplicationComponent : AndroidInjector<BaseApplicationClass> {
 
     @Component.Factory
     interface Factory {

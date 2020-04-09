@@ -12,8 +12,12 @@ class LoginViewModel @Inject constructor(
     private val accountCreationFeature: AccountCreationFeature.Dependencies
 ) : ViewModel() {
 
-    fun test(): Intent? {
+    fun launchSignupScreen(): Intent? {
         return (featureManager.getFeature<AccountCreationFeature, AccountCreationFeature.Dependencies>(accountCreationFeature))
             ?.getLaunchIntent(application)
+    }
+
+    fun launchHQ(): Intent? {
+        return Intent(application, HQActivity::class.java)
     }
 }

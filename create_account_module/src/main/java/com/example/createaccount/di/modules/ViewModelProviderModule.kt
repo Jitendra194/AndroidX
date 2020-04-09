@@ -13,5 +13,5 @@ abstract class ViewModelProviderModule {
     @Binds
     @IntoMap
     @ViewModelKey(EnterUserDetailsViewModel::class)
-    abstract fun bindLoginViewModel(viewModelUser: EnterUserDetailsViewModel): ViewModel
+    abstract fun bindUserDetailsViewModel(viewModel: EnterUserDetailsViewModel): ViewModel
 }
