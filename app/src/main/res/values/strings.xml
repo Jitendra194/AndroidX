@@ -19,4 +19,10 @@
     <string name="my_prescriptions">My Prescriptions</string>
     <string name="title_wellnesstips_hub">Wellness Tips Hub</string>
     <string name="wellness_tips">Wellness Tips</string>
+    <string name="home">Home</string>
+    <string name="help">Help</string>
+    <string name="suggestion_box">Suggestion Box</string>
+    <string name="payment_method">Payment Method</string>
+    <string name="edit_profile">Edit Profile</string>
+    <string name="sign_out">Sign Out</string>
 </resources>

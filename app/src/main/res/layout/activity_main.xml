@@ -14,13 +14,14 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:padding="8dp"
+        android:fitsSystemWindows="true"
         tools:context=".LoginFragment">
 
         <View
             android:id="@+id/image_placeholder"
             android:layout_width="100dp"
             android:layout_height="100dp"
-            android:layout_marginTop="50dp"
+            android:layout_marginTop="100dp"
             android:background="@android:color/darker_gray"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -35,7 +36,8 @@
             android:hint="@string/login_screen_username_hint"
             app:layout_constraintEnd_toEndOf="@id/image_placeholder"
             app:layout_constraintStart_toStartOf="@id/image_placeholder"
-            app:layout_constraintTop_toBottomOf="@id/image_placeholder" />
+            app:layout_constraintTop_toBottomOf="@id/image_placeholder"
+            android:importantForAutofill="no" />
 
         <EditText
             android:id="@+id/login_password"
