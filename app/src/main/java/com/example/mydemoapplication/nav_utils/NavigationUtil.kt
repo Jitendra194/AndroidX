@@ -5,36 +5,25 @@ import androidx.navigation.NavController
 import com.example.mydemoapplication.R
 import com.example.mydemoapplication.views.HQViewModel
 
-class NavigationUtil {
-    companion object {
-        fun navigate(
-            item: MenuItem,
-            hqViewModel: HQViewModel,
-            navController: NavController
-        ): Boolean {
-            when (item.itemId) {
-                R.id.pillsFragment -> {
-                    hqViewModel.launchPillsHub()
-                    navController.navigate(R.id.pillsFragment)
-                }
-                R.id.labReportsFragment -> {
-                    hqViewModel.launchLabReportsHub()
-                    navController.navigate(R.id.labReportsFragment)
-                }
-                R.id.prescriptionsFragment -> {
-                    hqViewModel.launchMyPrescriptionsHub()
-                    navController.navigate(R.id.prescriptionsFragment)
-                }
-                R.id.wellnessTipsFragment -> {
-                    hqViewModel.launchWellnessTipsHub()
-                    navController.navigate(R.id.wellnessTipsFragment)
-                }
-                else -> {
-                    hqViewModel.launchPillsHub()
-                    navController.navigate(R.id.pillsFragment)
-                }
-            }
+fun HQViewModel.navigate(
+    item: MenuItem,
+    navController: NavController
+): Boolean {
+    try {
+        if (item.itemId == navController.getBackStackEntry(item.itemId).destination.id) {
+            navController.popBackStack(item.itemId, false)
             return true
         }
+    } catch (e: IllegalArgumentException) {
+        e.printStackTrace()
     }
+    when (item.itemId) {
+        R.id.pillsFragment -> launchPillsHub()
+        R.id.labReportsFragment -> launchLabReportsHub()
+        R.id.prescriptionsFragment -> launchMyPrescriptionsHub()
+        R.id.wellnessTipsFragment -> launchWellnessTipsHub()
+        else -> launchPillsHub()
+    }
+    navController.navigate(item.itemId)
+    return true
 }

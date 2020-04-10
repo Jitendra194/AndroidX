@@ -4,14 +4,14 @@ import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.core.view.GravityCompat
 import androidx.databinding.DataBindingUtil
-import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import androidx.navigation.ui.*
 import com.example.mydemoapplication.R
 import com.example.mydemoapplication.databinding.HQActivityBinding
 import com.example.mydemoapplication.di.viewmodel_factory.ViewModelProviderFactory
-import com.example.mydemoapplication.nav_utils.NavigationUtil
+import com.example.mydemoapplication.nav_utils.navigate
 import dagger.android.support.DaggerAppCompatActivity
+import kotlinx.android.synthetic.main.h_q_activity.*
 import javax.inject.Inject
 
 class HQActivity : DaggerAppCompatActivity() {
@@ -37,23 +37,18 @@ class HQActivity : DaggerAppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.h_q_activity)
-        setSupportActionBar(binding.mainHqToolbar)
+        setSupportActionBar(main_hq_toolbar)
         setupActionBarWithNavController(navController, appBarConfiguration)
-        NavigationUI.setupWithNavController(
-            binding.mainHqToolbar,
-            navController,
-            appBarConfiguration
-        )
-        binding.navView.setupWithNavController(navController)
+        nav_view.setupWithNavController(navController)
         setupNavigation()
     }
 
     private fun setupNavigation() {
-        binding.bottomNavigation.setupWithNavController(navController)
+        bottom_navigation.setupWithNavController(navController)
             .also { hqViewModel.launchPillsHub() }
-
-        binding.bottomNavigation.setOnNavigationItemSelectedListener {
-            NavigationUtil.navigate(it, hqViewModel, navController)
+        bottom_navigation.setOnNavigationItemSelectedListener {
+            if (bottom_navigation.selectedItemId == it.itemId) false
+            else hqViewModel.navigate(it, navController)
         }
     }
 
@@ -61,11 +56,10 @@ class HQActivity : DaggerAppCompatActivity() {
         navController.navigateUp(appBarConfiguration) || super.onSupportNavigateUp()
 
     override fun onBackPressed() {
-        if (binding.hqDrawerLayout.isDrawerOpen(GravityCompat.START)) {
-            binding.hqDrawerLayout.closeDrawer(GravityCompat.START)
+        if (hq_drawer_layout.isDrawerOpen(GravityCompat.START)) {
+            hq_drawer_layout.closeDrawer(GravityCompat.START)
         } else {
             super.onBackPressed()
-            navController.popBackStack(R.id.pillsFragment, false)
         }
     }
 }
