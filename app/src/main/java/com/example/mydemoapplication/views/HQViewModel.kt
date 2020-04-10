@@ -12,19 +12,19 @@ class HQViewModel @Inject constructor(
     private val wellnessTipsFeature: WellnessTipsFeature.Dependencies
 ) : ViewModel() {
 
-    fun initialize() {
+    fun launchPillsHub() {
         featureManager.getFeature<PillsFeature, PillsFeature.Dependencies>(pillsFeature)
     }
 
-    fun launchLabReports() {
+    fun launchLabReportsHub() {
         featureManager.getFeature<LabReportsFeature, LabReportsFeature.Dependencies>(labReportsFeature)
     }
 
-    fun launchMyPrescriptions() {
+    fun launchMyPrescriptionsHub() {
         featureManager.getFeature<PrescriptionsFeature, PrescriptionsFeature.Dependencies>(prescriptionsFeature)
     }
 
-    fun launchWellnessTips() {
+    fun launchWellnessTipsHub() {
         featureManager.getFeature<WellnessTipsFeature, WellnessTipsFeature.Dependencies>(wellnessTipsFeature)
     }
 }
