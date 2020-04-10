@@ -2,13 +2,11 @@ package com.example.mydemoapplication.views
 
 import android.os.Bundle
 import androidx.activity.viewModels
+import androidx.core.view.GravityCompat
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
-import androidx.navigation.ui.AppBarConfiguration
-import androidx.navigation.ui.navigateUp
-import androidx.navigation.ui.setupActionBarWithNavController
-import androidx.navigation.ui.setupWithNavController
+import androidx.navigation.ui.*
 import com.example.mydemoapplication.R
 import com.example.mydemoapplication.databinding.HQActivityBinding
 import com.example.mydemoapplication.di.viewmodel_factory.ViewModelProviderFactory
@@ -23,15 +21,10 @@ class HQActivity : DaggerAppCompatActivity() {
 
     private lateinit var binding: HQActivityBinding
 
+    private val navController by lazy { findNavController(R.id.main_hq_navigation) }
     private val hqViewModel: HQViewModel by viewModels { viewModelProviderFactory }
-    private lateinit var navController: NavController
-    private lateinit var appBarConfiguration: AppBarConfiguration
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        binding = DataBindingUtil.setContentView(this, R.layout.h_q_activity)
-        navController = findNavController(R.id.main_hq_navigation)
-        appBarConfiguration = AppBarConfiguration(
+    private val appBarConfiguration by lazy {
+        AppBarConfiguration(
             setOf(
                 R.id.pillsFragment,
                 R.id.labReportsFragment,
@@ -39,7 +32,18 @@ class HQActivity : DaggerAppCompatActivity() {
                 R.id.wellnessTipsFragment
             ), binding.hqDrawerLayout
         )
+    }
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        binding = DataBindingUtil.setContentView(this, R.layout.h_q_activity)
+        setSupportActionBar(binding.mainHqToolbar)
         setupActionBarWithNavController(navController, appBarConfiguration)
+        NavigationUI.setupWithNavController(
+            binding.mainHqToolbar,
+            navController,
+            appBarConfiguration
+        )
         binding.navView.setupWithNavController(navController)
         setupNavigation()
     }
@@ -53,10 +57,15 @@ class HQActivity : DaggerAppCompatActivity() {
         }
     }
 
-    override fun onSupportNavigateUp() = navController.navigateUp(appBarConfiguration)
+    override fun onSupportNavigateUp() =
+        navController.navigateUp(appBarConfiguration) || super.onSupportNavigateUp()
 
     override fun onBackPressed() {
-        super.onBackPressed()
-        navController.popBackStack(R.id.pillsFragment, false)
+        if (binding.hqDrawerLayout.isDrawerOpen(GravityCompat.START)) {
+            binding.hqDrawerLayout.closeDrawer(GravityCompat.START)
+        } else {
+            super.onBackPressed()
+            navController.popBackStack(R.id.pillsFragment, false)
+        }
     }
 }
