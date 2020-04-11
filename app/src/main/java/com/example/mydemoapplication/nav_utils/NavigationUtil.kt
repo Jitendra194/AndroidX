@@ -1,11 +1,13 @@
 package com.example.mydemoapplication.nav_utils
 
+import android.util.Log
 import android.view.MenuItem
+import android.widget.Toast
 import androidx.navigation.NavController
 import com.example.mydemoapplication.R
 import com.example.mydemoapplication.views.HQViewModel
 
-fun HQViewModel.navigate(
+internal fun HQViewModel.navigate(
     item: MenuItem,
     navController: NavController
 ): Boolean {
@@ -25,5 +27,18 @@ fun HQViewModel.navigate(
         else -> launchPillsHub()
     }
     navController.navigate(item.itemId)
+    return true
+}
+
+internal fun MenuItem.setupNavDrawerDestination(): Boolean {
+    when (this.itemId) {
+        R.id.drawer_home -> Log.d("nav_drawer", this.title.toString())
+        R.id.drawer_edit_profile -> Log.d("nav_drawer", this.title.toString())
+        R.id.drawer_payment_methods -> Log.d("nav_drawer", this.title.toString())
+        R.id.drawer_suggestion_box -> Log.d("nav_drawer", this.title.toString())
+        R.id.drawer_help -> Log.d("nav_drawer", this.title.toString())
+        R.id.drawer_sign_out -> Log.d("nav_drawer", this.title.toString())
+        else -> Log.d("nav_drawer", this.title.toString())
+    }
     return true
 }

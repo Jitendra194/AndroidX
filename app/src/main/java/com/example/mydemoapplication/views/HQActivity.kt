@@ -1,6 +1,7 @@
 package com.example.mydemoapplication.views
 
 import android.os.Bundle
+import android.view.MenuItem
 import androidx.activity.viewModels
 import androidx.core.view.GravityCompat
 import androidx.databinding.DataBindingUtil
@@ -10,6 +11,7 @@ import com.example.mydemoapplication.R
 import com.example.mydemoapplication.databinding.HQActivityBinding
 import com.example.mydemoapplication.di.viewmodel_factory.ViewModelProviderFactory
 import com.example.mydemoapplication.nav_utils.navigate
+import com.example.mydemoapplication.nav_utils.setupNavDrawerDestination
 import dagger.android.support.DaggerAppCompatActivity
 import kotlinx.android.synthetic.main.h_q_activity.*
 import javax.inject.Inject
@@ -37,13 +39,23 @@ class HQActivity : DaggerAppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.h_q_activity)
-        setSupportActionBar(main_hq_toolbar)
-        setupActionBarWithNavController(navController, appBarConfiguration)
-        nav_view.setupWithNavController(navController)
-        setupNavigation()
+        setupActionBar()
+        setupNavigationDrawer()
+        setupBottomNavigationView()
     }
 
-    private fun setupNavigation() {
+    private fun setupNavigationDrawer() {
+        nav_view.setupWithNavController(navController)
+        nav_view.setCheckedItem(R.id.drawer_home)
+        nav_view.setNavigationItemSelectedListener { it.setupNavDrawerDestination() }
+    }
+
+    private fun setupActionBar() {
+        setSupportActionBar(main_hq_toolbar)
+        setupActionBarWithNavController(navController, appBarConfiguration)
+    }
+
+    private fun setupBottomNavigationView() {
         bottom_navigation.setupWithNavController(navController)
             .also { hqViewModel.launchPillsHub() }
         bottom_navigation.setOnNavigationItemSelectedListener {
