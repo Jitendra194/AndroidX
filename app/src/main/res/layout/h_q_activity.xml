@@ -7,6 +7,7 @@
         android:id="@+id/hq_drawer_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="?attr/colorControlHighlight"
         android:fitsSystemWindows="true">
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -52,10 +53,15 @@
 
         <com.google.android.material.navigation.NavigationView
             android:id="@+id/nav_view"
+            style="?attr/navigationViewStyle"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_gravity="start"
+            android:backgroundTint="?colorSurface"
+            app:itemTextAppearance="?textAppearanceBody2"
+            app:itemTextColor="@color/material_on_surface_emphasis_high_type"
             android:fitsSystemWindows="true"
+            app:headerLayout="@layout/hq_navigation_drawer_header"
             app:menu="@menu/hq_navigation_drawer_menu" />
 
     </androidx.drawerlayout.widget.DrawerLayout>

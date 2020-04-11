@@ -2,34 +2,48 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <item
-        android:id="@+id/drawer_home"
-        android:checked="true"
-        android:orderInCategory="1"
-        android:title="@string/home" />
+    <group
+        android:id="@+id/group_1"
+        android:checkableBehavior="single">
+        <item
+            android:id="@+id/drawer_home"
+            android:checkable="true"
+            android:icon="@drawable/ic_home"
+            android:title="@string/home" />
 
-    <item
-        android:id="@+id/drawer_edit_profile"
-        android:orderInCategory="2"
-        android:title="@string/edit_profile" />
+        <item
+            android:id="@+id/drawer_edit_profile"
+            android:checkable="true"
+            android:icon="@drawable/ic_edit_profile"
+            android:title="@string/edit_profile" />
 
-    <item
-        android:id="@+id/drawer_payment_methods"
-        android:orderInCategory="3"
-        android:title="@string/payment_method" />
+        <item
+            android:id="@+id/drawer_payment_methods"
+            android:checkable="true"
+            android:icon="@drawable/ic_payment_method"
+            android:title="@string/payment_method" />
+    </group>
 
-    <item
-        android:id="@+id/drawer_suggestion_box"
-        android:orderInCategory="4"
-        android:title="@string/suggestion_box" />
+    <item android:title="Help and Feedback">
+        <menu>
+            <item
+                android:id="@+id/drawer_suggestion_box"
+                android:checkable="true"
+                android:icon="@drawable/ic_feedback"
+                android:title="@string/suggestion_box" />
 
-    <item
-        android:id="@+id/drawer_help"
-        android:orderInCategory="5"
-        android:title="@string/help" />
+            <item
+                android:id="@+id/drawer_help"
+                android:checkable="true"
+                android:icon="@drawable/ic_help"
+                android:title="@string/help" />
+        </menu>
+    </item>
 
-    <item
-        android:id="@+id/drawer_sign_out"
-        android:orderInCategory="6"
-        android:title="@string/sign_out" />
+    <group android:id="@+id/group_2">
+        <item
+            android:id="@+id/drawer_sign_out"
+            android:icon="@drawable/ic_sign_out"
+            android:title="@string/sign_out" />
+    </group>
 </menu>
