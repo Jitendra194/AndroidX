@@ -9,25 +9,25 @@
     <fragment
         app:moduleName="pills_hub"
         android:id="@+id/pillsFragment"
-        android:name="com.example.pills_hub.views.PillsFragment"
+        android:name="com.pills.pills_hub.views.PillsFragment"
         android:label="PillsFragment" />
 
     <fragment
         app:moduleName="lab_hub"
         android:id="@+id/labReportsFragment"
-        android:name="com.example.lab_hub.views.LabReportsFragment"
+        android:name="com.pills.lab_hub.views.LabReportsFragment"
         android:label="LabReportsFragment" />
 
     <fragment
         app:moduleName="prescriptions_hub"
         android:id="@+id/prescriptionsFragment"
-        android:name="com.example.prescriptions_hub.views.PrescriptionsFragment"
+        android:name="com.pills.prescriptions_hub.views.PrescriptionsFragment"
         android:label="PrescriptionsFragment" />
 
     <fragment
         app:moduleName="wellnessTips_hub"
         android:id="@+id/wellnessTipsFragment"
-        android:name="com.example.wellnesstips_hub.views.WellnessTipsFragment"
+        android:name="com.pills.wellnesstips_hub.views.WellnessTipsFragment"
         android:label="WellnessTipsFragment" />
 
 </navigation>
