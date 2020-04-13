@@ -6,7 +6,7 @@
 
         <variable
             name="viewModel"
-            type="com.example.createaccount.views.EnterUserDetailsViewModel" />
+            type="com.pills.createaccount.views.EnterUserDetailsViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

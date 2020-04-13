@@ -6,6 +6,6 @@
 
     <fragment
         android:id="@+id/enterUserDetailsFragment"
-        android:name="com.example.createaccount.views.EnterUserDetailsFragment"
+        android:name="com.pills.createaccount.views.EnterUserDetailsFragment"
         android:label="EnterUserDetailsFragment" />
 </navigation>

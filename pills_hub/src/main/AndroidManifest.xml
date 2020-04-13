@@ -1,6 +1,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:dist="http://schemas.android.com/apk/distribution"
-    package="com.example.pills_hub">
+    package="com.pills.pills_hub">
 
     <dist:module
         dist:instant="false"
