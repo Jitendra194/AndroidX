@@ -6,9 +6,18 @@ import com.pills.mydemoapplication.R
 import com.pills.mydemoapplication.base_application.BaseApplicationClass
 import kotlin.reflect.KClass
 
+enum class FeatureName {
+    AccountCreationFeature,
+    PillsFeature,
+    LabReportsFeature,
+    PrescriptionsFeature,
+    WellnessTipsFeature,
+    LoginFeature
+}
+
 fun <T : Feature<*>> KClass<T>.info(context: Context) = when (this) {
     AccountCreationFeature::class -> Feature.Info(
-        id = "home",
+        id = FeatureName.AccountCreationFeature,
         name = context.getString(R.string.create_account)
     )
     else -> throw IllegalArgumentException("Unexpected feature $this")
@@ -19,7 +28,7 @@ interface Feature<T> {
     fun inject(dependencies: T)
 
     data class Info(
-        val id: String,
+        val id: FeatureName,
         val name: String
     )
 }
@@ -51,5 +60,12 @@ interface PrescriptionsFeature : Feature<PrescriptionsFeature.Dependencies> {
 interface WellnessTipsFeature : Feature<WellnessTipsFeature.Dependencies> {
     interface Dependencies {
         val application: BaseApplicationClass
+    }
+}
+
+interface LoginFeature : Feature<LoginFeature.Dependencies> {
+    interface Dependencies {
+        val application: BaseApplicationClass
+        val featureManager: FeatureManager
     }
 }

@@ -7,7 +7,7 @@ import com.pills.wellnesstips_hub.di.components.DaggerWellnessTipsFeatureMainCom
 import com.pills.wellnesstips_hub.di.components.WellnessTipsFeatureMainComponent
 import com.google.auto.service.AutoService
 
-lateinit var wellnessTipsFeatureMainComponent: WellnessTipsFeatureMainComponent
+internal lateinit var wellnessTipsFeatureMainComponent: WellnessTipsFeatureMainComponent
     private set
 
 @AutoService(WellnessTipsFeature::class)
