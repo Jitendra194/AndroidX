@@ -53,4 +53,15 @@ object FeaturesModule {
                 get() = application
         }
     }
+
+    @Provides
+    @Singleton
+    fun providesLoginFeatureDependencies(application: BaseApplicationClass, featureManager: FeatureManager): LoginFeature.Dependencies {
+        return object : LoginFeature.Dependencies {
+            override val application: BaseApplicationClass
+                get() = application
+            override val featureManager: FeatureManager
+                get() = featureManager
+        }
+    }
 }

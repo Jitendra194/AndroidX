@@ -3,7 +3,7 @@ package com.pills.mydemoapplication.di.modules
 import androidx.lifecycle.ViewModel
 import com.pills.mydemoapplication.di.viewmodel_factory.ViewModelKey
 import com.pills.mydemoapplication.views.HQViewModel
-import com.pills.mydemoapplication.views.LoginViewModel
+import com.pills.mydemoapplication.views.LaunchViewModel
 import dagger.Binds
 import dagger.Module
 import dagger.multibindings.IntoMap
@@ -13,8 +13,8 @@ import dagger.multibindings.IntoMap
 abstract class ViewModelProviderModule {
     @Binds
     @IntoMap
-    @ViewModelKey(LoginViewModel::class)
-    abstract fun bindLoginViewModel(viewModel: LoginViewModel): ViewModel
+    @ViewModelKey(LaunchViewModel::class)
+    abstract fun bindLoginViewModel(viewModel: LaunchViewModel): ViewModel
 
     @Binds
     @IntoMap

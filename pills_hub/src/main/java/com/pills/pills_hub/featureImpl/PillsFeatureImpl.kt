@@ -7,7 +7,7 @@ import com.pills.mydemoapplication.feature_package.PillsFeature
 import com.pills.pills_hub.di.components.DaggerPillsFeatureMainComponent
 import com.pills.pills_hub.di.components.PillsFeatureMainComponent
 
-lateinit var pillsFeatureMainComponent: PillsFeatureMainComponent
+internal lateinit var pillsFeatureMainComponent: PillsFeatureMainComponent
     private set
 
 @AutoService(PillsFeature::class)

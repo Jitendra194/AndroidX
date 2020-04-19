@@ -7,7 +7,7 @@ import com.pills.prescriptions_hub.di.components.PrescriptionsFeatureMainCompone
 import com.google.auto.service.AutoService
 import com.pills.prescriptions_hub.di.components.DaggerPrescriptionsFeatureMainComponent
 
-lateinit var prescriptionsFeatureMainComponent: PrescriptionsFeatureMainComponent
+internal lateinit var prescriptionsFeatureMainComponent: PrescriptionsFeatureMainComponent
     private set
 
 @AutoService(PrescriptionsFeature::class)

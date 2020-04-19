@@ -7,7 +7,7 @@ import com.pills.lab_hub.di.components.DaggerLabReportsFeatureMainComponent
 import com.pills.lab_hub.di.components.LabReportsFeatureMainComponent
 import com.pills.mydemoapplication.feature_package.LabReportsFeature
 
-lateinit var labReportsFeatureMainComponent: LabReportsFeatureMainComponent
+internal lateinit var labReportsFeatureMainComponent: LabReportsFeatureMainComponent
     private set
 
 @AutoService(LabReportsFeature::class)

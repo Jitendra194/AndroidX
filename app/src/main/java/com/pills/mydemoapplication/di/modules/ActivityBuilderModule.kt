@@ -1,7 +1,7 @@
 package com.pills.mydemoapplication.di.modules
 
 import com.pills.mydemoapplication.views.HQActivity
-import com.pills.mydemoapplication.views.MainActivity
+import com.pills.mydemoapplication.views.LaunchActivity
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
 
@@ -10,7 +10,7 @@ import dagger.android.ContributesAndroidInjector
 abstract class ActivityBuilderModule {
 
     @ContributesAndroidInjector(modules = [ViewModelProviderModule::class])
-    abstract fun contributesMainActivity(): MainActivity
+    abstract fun contributesLaunchActivity(): LaunchActivity
 
     @ContributesAndroidInjector(modules = [ViewModelProviderModule::class])
     abstract fun contributesHQActivity(): HQActivity

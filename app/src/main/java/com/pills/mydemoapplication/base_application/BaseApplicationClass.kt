@@ -8,9 +8,10 @@ import dagger.android.DispatchingAndroidInjector
 import dagger.android.HasAndroidInjector
 import javax.inject.Inject
 
-class BaseApplicationClass : SplitCompatApplication(), HasAndroidInjector {
+internal lateinit var appComponent: BaseApplicationComponent
+    private set
 
-    private lateinit var appComponent: BaseApplicationComponent
+class BaseApplicationClass : SplitCompatApplication(), HasAndroidInjector {
 
     @Inject
     lateinit var dispatchingActivityInjector: DispatchingAndroidInjector<Any>

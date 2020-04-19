@@ -25,4 +25,5 @@
     <string name="payment_method">Payment Method</string>
     <string name="edit_profile">Edit Profile</string>
     <string name="sign_out">Sign Out</string>
+    <string name="title_login_module">Login</string>
 </resources>

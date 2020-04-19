@@ -8,7 +8,7 @@ import com.pills.createaccount.di.components.DaggerCreateAccountMainComponent
 import com.pills.createaccount.views.CreateAccountActivity
 import com.pills.mydemoapplication.feature_package.AccountCreationFeature
 
-lateinit var createAccountMainComponent: CreateAccountMainComponent
+internal lateinit var createAccountMainComponent: CreateAccountMainComponent
     private set
 
 @AutoService(AccountCreationFeature::class)
