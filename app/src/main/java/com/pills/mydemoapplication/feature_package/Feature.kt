@@ -6,13 +6,13 @@ import com.pills.mydemoapplication.R
 import com.pills.mydemoapplication.base_application.BaseApplicationClass
 import kotlin.reflect.KClass
 
-enum class FeatureName {
-    AccountCreationFeature,
-    PillsFeature,
-    LabReportsFeature,
-    PrescriptionsFeature,
-    WellnessTipsFeature,
-    LoginFeature
+enum class FeatureName(val moduleName: String) {
+    AccountCreationFeature("create_account_module"),
+    PillsFeature("pills_hub"),
+    LabReportsFeature("lab_hub"),
+    PrescriptionsFeature("prescriptions_hub"),
+    WellnessTipsFeature("wellnessTips_hub"),
+    LoginFeature("login_module")
 }
 
 fun <T : Feature<*>> KClass<T>.info(context: Context) = when (this) {

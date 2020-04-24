@@ -6,8 +6,10 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.Observer
 import com.pills.login_module.R
 import com.pills.login_module.databinding.LoginFragmentBinding
 import com.pills.login_module.featureImpl.loginFeatureMainComponent
@@ -15,6 +17,7 @@ import com.pills.mydemoapplication.di.viewmodel_factory.ViewModelProviderFactory
 import dagger.android.AndroidInjector
 import dagger.android.DispatchingAndroidInjector
 import dagger.android.HasAndroidInjector
+import kotlinx.android.synthetic.main.login_fragment.*
 import javax.inject.Inject
 
 
@@ -43,9 +46,25 @@ class LoginFragment : Fragment(), HasAndroidInjector {
     ): View? {
         binding = DataBindingUtil.inflate(inflater, R.layout.login_fragment, container, false)
         binding.lifecycleOwner = this
-        binding.launchCreateAccount.setOnClickListener { startActivity(viewModel.launchSignupScreen()) }
-        binding.loginButton.setOnClickListener { startActivity(viewModel.launchHQ()) }
+        setupButtonLaunchEvents()
         return binding.root
+    }
+
+    private fun setupButtonLaunchEvents() {
+        binding.launchCreateAccount.setOnClickListener { getCreateAccountScreen() }
+        binding.loginButton.setOnClickListener { startActivity(viewModel.launchHQ()) }
+        viewModel.isFeatureEventTriggered.observe(viewLifecycleOwner, Observer {
+            Toast.makeText(context, "$it is installed successfully", Toast.LENGTH_SHORT).show()
+            viewModel.launchSignupScreen()
+        })
+    }
+
+    private fun getCreateAccountScreen() {
+        if (viewModel.isCreateAccountFeatureInstalled()) {
+            startActivity(viewModel.launchSignupScreen())
+        } else {
+            viewModel.installCreateAccountFeature()
+        }
     }
 
     override fun androidInjector(): AndroidInjector<Any> = dispatchingAndroidInjector
