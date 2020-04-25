@@ -2,6 +2,7 @@ package com.pills.createaccount.views
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import com.google.android.play.core.splitcompat.SplitCompat
 import com.pills.createaccount.R
 import com.pills.createaccount.featureImpl.createAccountMainComponent
 import dagger.android.AndroidInjector
@@ -19,6 +20,7 @@ class CreateAccountActivity : AppCompatActivity(), HasAndroidInjector {
             .create(this)
             .inject(this)
         super.onCreate(savedInstanceState)
+        SplitCompat.install(this)
         setContentView(R.layout.activity_create_account)
     }
 
