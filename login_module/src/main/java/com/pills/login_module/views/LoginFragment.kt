@@ -55,7 +55,7 @@ class LoginFragment : Fragment(), HasAndroidInjector {
         binding.loginButton.setOnClickListener { startActivity(viewModel.launchHQ()) }
         viewModel.isFeatureEventTriggered.observe(viewLifecycleOwner, Observer {
             Toast.makeText(context, "$it is installed successfully", Toast.LENGTH_SHORT).show()
-            viewModel.launchSignupScreen()
+            getCreateAccountScreen()
         })
     }
 
