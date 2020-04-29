@@ -2,14 +2,15 @@ apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
+apply from: '../deps.gradle'
 
 android {
-    compileSdkVersion 29
+    compileSdkVersion androidDependencies.compile_sdk_version
     buildToolsVersion "29.0.2"
     defaultConfig {
         applicationId "com.pills.mydemoapplication"
-        minSdkVersion 21
-        targetSdkVersion 29
+        minSdkVersion androidDependencies.min_sdk_version
+        targetSdkVersion androidDependencies.target_sdk_version
         versionCode 4
         versionName "4.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
@@ -30,40 +31,46 @@ android {
 }
 
 dependencies {
-    def dagger_version = '2.27'
-    def nav_version = '2.3.0-alpha05'
-
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
-    api 'androidx.core:core-ktx:1.2.0'
-    api "com.google.auto.service:auto-service-annotations:1.0-rc6"
 
-    api 'androidx.appcompat:appcompat:1.1.0'
-    api 'com.google.android.material:material:1.1.0'
-    api 'androidx.constraintlayout:constraintlayout:1.1.3'
-    api 'androidx.legacy:legacy-support-v4:1.0.0'
+    //android core
+    api deps.core.ktx
+    api deps.kotlin.stdlib
 
-    testImplementation 'junit:junit:4.13'
-    androidTestImplementation 'androidx.test:runner:1.2.0'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+    //appcompat
+    api deps.appcompat.appcompat
+    api deps.appcompat.support_v4
+
+    //design
+    api deps.material.material
+    api deps.constraintLayout.constraintLayout
 
     //Dagger
-    api "com.google.dagger:dagger:$dagger_version"
-    annotationProcessor "com.google.dagger:dagger-android-processor:$dagger_version"
-    kapt "com.google.dagger:dagger-android-processor:$dagger_version"
-    api "com.google.dagger:dagger-android:$dagger_version"
-    api "com.google.dagger:dagger-android-support:$dagger_version"
-    kapt "com.google.dagger:dagger-compiler:$dagger_version"
+    api deps.dagger.core
+    api deps.dagger.android
+    api deps.dagger.android_support
+    kapt deps.dagger.android_compiler
+    kapt deps.dagger.compiler
 
-    //Navigation - Jetpack Libraries - Dynamic
-    api "androidx.navigation:navigation-fragment-ktx:$nav_version"
-    api "androidx.navigation:navigation-ui-ktx:$nav_version"
-    api "androidx.navigation:navigation-dynamic-features-fragment:$nav_version"
+    //Navigation
+    api deps.navigation.fragment
+    api deps.navigation.ui
+    api deps.navigation.dynamic
 
     // Lifecycles
-    api 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.2.0'
-    api 'androidx.lifecycle:lifecycle-extensions:2.2.0'
-    api "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    api deps.lifecycle.viewmodel
+    api deps.lifecycle.viewmodelext
 
-    api "com.google.android.play:core:1.7.2"
+    //play services - split compat
+    api deps.play.core
+
+    //auto service
+    api deps.autoservice.annotations
+
+    //unit test
+    testImplementation deps.test.junit
+    androidTestImplementation deps.test.runner
+
+    //espresso
+    androidTestImplementation deps.espresso.core
 }
