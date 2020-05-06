@@ -67,6 +67,9 @@ dependencies {
     //auto service
     api deps.autoservice.annotations
 
+    //Google Sign in
+    api deps.google.sso
+
     //unit test
     testImplementation deps.test.junit
     androidTestImplementation deps.test.runner

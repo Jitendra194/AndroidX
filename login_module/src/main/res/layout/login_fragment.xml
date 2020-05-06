@@ -13,8 +13,8 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:fitsSystemWindows="true"
         android:layout_margin="16dp"
+        android:fitsSystemWindows="true"
         tools:context=".LoginFragment">
 
         <View
@@ -56,7 +56,8 @@
             app:layout_constraintEnd_toEndOf="@id/text_input_layout_outlined_username"
             app:layout_constraintStart_toStartOf="@id/text_input_layout_outlined_username"
             app:layout_constraintTop_toBottomOf="@id/text_input_layout_outlined_username"
-            app:layout_constraintVertical_bias="0.0">
+            app:layout_constraintVertical_bias="0.0"
+            app:endIconMode="password_toggle">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/login_password"

@@ -12,5 +12,4 @@ object AppModule {
     @Provides
     @Singleton
     fun providesFeatureManager(application: BaseApplicationClass): FeatureManager = FeatureManagerImpl(application)
-
 }

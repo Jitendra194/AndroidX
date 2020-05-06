@@ -1,126 +1,124 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
 
         <variable
             name="viewModel"
             type="com.pills.createaccount.views.EnterUserDetailsViewModel" />
+
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:padding="8dp">
+        android:padding="16dp">
 
         <TextView
             android:id="@+id/title_text"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:text="@string/create_account_title_string"
-            android:textAppearance="@style/TextAppearance.AppCompat.Display1"
-            android:textColor="@android:color/black"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <EditText
-            android:id="@+id/create_account_first_name"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="30dp"
-            android:hint="First name"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="@id/title_text"
-            app:layout_constraintTop_toBottomOf="@id/title_text" />
-
-        <EditText
-            android:id="@+id/create_account_last_name"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:hint="Last name"
-            app:layout_constraintEnd_toEndOf="@id/create_account_first_name"
-            app:layout_constraintStart_toStartOf="@id/create_account_first_name"
-            app:layout_constraintTop_toBottomOf="@id/create_account_first_name" />
-
-        <EditText
-            android:id="@+id/create_account_dob"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:layout_marginEnd="4dp"
-            android:hint="Date of Birth"
-            app:layout_constraintEnd_toStartOf="@id/create_Account_vertical_guideline"
-            app:layout_constraintStart_toStartOf="@id/create_account_last_name"
-            app:layout_constraintTop_toBottomOf="@id/create_account_last_name" />
-
-        <EditText
-            android:id="@+id/create_account_gender"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="4dp"
-            android:layout_marginTop="10dp"
-            android:hint="Gender"
-            app:layout_constraintEnd_toEndOf="@id/create_account_last_name"
-            app:layout_constraintStart_toEndOf="@id/create_Account_vertical_guideline"
-            app:layout_constraintTop_toBottomOf="@id/create_account_last_name" />
-
-        <EditText
-            android:id="@+id/create_account_aadhar_number"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:hint="Aadhar Number"
-            app:layout_constraintEnd_toEndOf="@id/create_account_gender"
-            app:layout_constraintStart_toStartOf="@id/create_account_dob"
-            app:layout_constraintTop_toBottomOf="@id/create_account_dob" />
-
-        <EditText
-            android:id="@+id/create_account_email"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:hint="Email"
-            app:layout_constraintEnd_toEndOf="@id/create_account_aadhar_number"
-            app:layout_constraintStart_toStartOf="@id/create_account_aadhar_number"
-            app:layout_constraintTop_toBottomOf="@id/create_account_aadhar_number" />
-
-        <EditText
-            android:id="@+id/create_account_mobile_number"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:hint="Mobile Number"
-            android:inputType="phone"
-            android:maxLength="10"
-            app:layout_constraintEnd_toEndOf="@id/create_account_email"
-            app:layout_constraintStart_toStartOf="@id/create_account_email"
-            app:layout_constraintTop_toBottomOf="@id/create_account_email" />
-
-        <EditText
-            android:id="@+id/create_account_password"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:hint="Password"
-            android:inputType="textVisiblePassword"
-            app:layout_constraintEnd_toEndOf="@id/create_account_mobile_number"
-            app:layout_constraintStart_toStartOf="@id/create_account_mobile_number"
-            app:layout_constraintTop_toBottomOf="@id/create_account_mobile_number" />
-
-        <Button
-            android:id="@+id/create_account_submit_button"
+            style="@style/TextAppearance.MaterialComponents.Headline5"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
-            android:text="submit"
-            android:onClick="@{viewModel::onClickNext}"
-            app:layout_constraintEnd_toEndOf="@id/create_account_password"
-            app:layout_constraintStart_toStartOf="@id/create_account_password"
-            app:layout_constraintTop_toBottomOf="@id/create_account_password" />
+            android:text="@{@string/welcome_user(viewModel.nameInTitle)}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Welcome, User!" />
+
+        <TextView
+            android:id="@+id/subtitle_text"
+            style="@style/TextAppearance.MaterialComponents.Subtitle1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="We need a few more details to finish your profile"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/title_text"
+            tools:text="We need a few more details to finish your profile" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/enter_details_dob"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="8dp"
+            app:layout_constraintEnd_toStartOf="@id/create_Account_vertical_guideline"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/subtitle_text">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/enter_details_dob_field"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:focusable="false"
+                android:hint="Date of birth*"
+                android:imeOptions="actionNext"
+                android:inputType="date"
+                android:text="@{viewModel.dobField}" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/enter_details_gender"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="20dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/create_Account_vertical_guideline"
+            app:layout_constraintTop_toBottomOf="@id/subtitle_text">
+
+            <AutoCompleteTextView
+                android:id="@+id/enter_details_gender_field"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Gender*"
+                android:imeOptions="actionNext"
+                android:inputType="none"
+                android:text="@={viewModel.gender}" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/enter_details_mobile"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            app:layout_constraintEnd_toEndOf="@id/enter_details_gender"
+            app:layout_constraintStart_toStartOf="@id/enter_details_dob"
+            app:layout_constraintTop_toBottomOf="@id/enter_details_dob"
+            app:prefixText="+91">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/enter_details_mobile_field"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Mobile Number*"
+                android:imeOptions="actionDone"
+                android:inputType="phone"
+                android:maxLength="10"
+                android:maxLines="1"
+                android:text="@={viewModel.mobileNumber}" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <Button
+            android:id="@+id/enter_details_submit_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:onClick="@{viewModel.onClickSubmit}"
+            android:text="Submit"
+            app:layout_constraintEnd_toEndOf="@id/enter_details_mobile"
+            app:layout_constraintStart_toStartOf="@id/enter_details_mobile"
+            app:layout_constraintTop_toBottomOf="@id/enter_details_mobile" />
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/create_Account_vertical_guideline"
