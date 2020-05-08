@@ -17,7 +17,7 @@
 
         <TextView
             android:id="@+id/create_account_title"
-            style="@style/TextAppearance.MaterialComponents.Headline5"
+            style="@style/TextAppearance.MyTheme.Headline5"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
@@ -28,7 +28,7 @@
 
         <TextView
             android:id="@+id/create_account_method"
-            style="@style/TextAppearance.MaterialComponents.Subtitle1"
+            style="@style/TextAppearance.MyTheme.Subtitle1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
@@ -61,11 +61,11 @@
 
         <TextView
             android:id="@+id/create_method_separator_title"
-            style="@style/TextAppearance.MaterialComponents.Subtitle1"
+            style="@style/TextAppearance.MyTheme.Subtitle1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="30dp"
-            android:text="or continue with email"
+            android:text="or continue with mobile number"
             app:layout_constraintEnd_toStartOf="@id/create_account_separator_2"
             app:layout_constraintStart_toEndOf="@id/create_account_separator_1"
             app:layout_constraintTop_toBottomOf="@+id/sign_in_button" />
@@ -136,7 +136,7 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Email*"
+                android:hint="Email"
                 android:imeOptions="actionNext"
                 android:inputType="textEmailAddress"
                 android:maxLines="1" />
