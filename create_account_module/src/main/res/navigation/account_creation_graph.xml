@@ -10,7 +10,7 @@
         android:id="@+id/createAccountMethodFragment"
         android:name="com.pills.createaccount.views.CreateAccountMethodFragment"
         android:label="CreateAccountMethodFragment"
-        tools:layout="@layout/create_account_method_fragment">
+        tools:layout="@layout/fragment_create_account_method">
         <action
             android:id="@+id/action_createAccountMethodFragment_to_enterUserDetailsFragment"
             app:destination="@id/enterUserDetailsFragment"

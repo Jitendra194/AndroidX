@@ -11,11 +11,11 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.pills.createaccount.R
-import com.pills.createaccount.databinding.CreateAccountMethodFragmentBinding
+import com.pills.createaccount.databinding.FragmentCreateAccountMethodBinding
 import com.pills.createaccount.views.CreateAccountMethodViewModel.Companion.RC_SIGN_IN
 import com.pills.mydemoapplication.di.viewmodel_factory.ViewModelProviderFactory
 import dagger.android.support.DaggerFragment
-import kotlinx.android.synthetic.main.create_account_method_fragment.*
+import kotlinx.android.synthetic.main.fragment_create_account_method.*
 import javax.inject.Inject
 
 class CreateAccountMethodFragment : DaggerFragment() {
@@ -25,12 +25,12 @@ class CreateAccountMethodFragment : DaggerFragment() {
 
     private val createAccountMethodViewModel: CreateAccountMethodViewModel by viewModels { viewModelProviderFactory }
 
-    private lateinit var binding: CreateAccountMethodFragmentBinding
+    private lateinit var binding: FragmentCreateAccountMethodBinding
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? =
-        DataBindingUtil.inflate<CreateAccountMethodFragmentBinding>(inflater, R.layout.create_account_method_fragment, container, false).run {
+        DataBindingUtil.inflate<FragmentCreateAccountMethodBinding>(inflater, R.layout.fragment_create_account_method, container, false).run {
         binding = this
-        lifecycleOwner = this@CreateAccountMethodFragment
+        lifecycleOwner = viewLifecycleOwner
         viewModel = createAccountMethodViewModel
         binding.root
     }
@@ -52,9 +52,6 @@ class CreateAccountMethodFragment : DaggerFragment() {
     }
 
     private fun setUpUserActions() {
-        /*create_account_method_next_button.setOnClickListener {
-            findNavController().navigate(CreateAccountMethodFragmentDirections.actionCreateAccountMethodFragmentToEnterUserDetailsFragment())
-        }*/
         sign_in_button.setOnClickListener {
             startActivityForResult(createAccountMethodViewModel.getGoogleSignInIntent(), RC_SIGN_IN)
         }

@@ -40,9 +40,8 @@ class EnterUserDetailsFragment : DaggerFragment() {
         super.onStart()
         userDetailsViewModel.apply {
             setArgsInViewModel(args.GivenName)
-            pageData.observe(viewLifecycleOwner, Observer { Toast.makeText(context, it.toString(), Toast.LENGTH_SHORT).show() })
-            enter_details_dob_field.setOnClickListener { getCalendar { it.show(childFragmentManager, it.toString()) } }
             enter_details_gender_field.setAdapter(arrayAdapter)
+            enter_details_dob_field.setOnClickListener { getCalendar { it.show(childFragmentManager, it.toString()) } }
         }
     }
 }
