@@ -169,6 +169,8 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
+            app:counterEnabled="true"
+            app:counterMaxLength="10"
             app:errorEnabled="true"
             app:errorText="@{viewModel.mobileNumber.length == 0 ? @string/mobile_number_error_text_2 : @string/mobile_number_error_text_1}"
             app:errorTextBool="@{viewModel.mobileNumberError}"

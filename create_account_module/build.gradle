@@ -11,8 +11,8 @@ android {
     defaultConfig {
         minSdkVersion androidDependencies.min_sdk_version
         targetSdkVersion androidDependencies.target_sdk_version
-        versionCode 5
-        versionName "5.0"
+        versionCode 7
+        versionName "5.0.2"
     }
 
     kotlinOptions {
