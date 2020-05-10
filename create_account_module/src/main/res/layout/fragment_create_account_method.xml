@@ -21,7 +21,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
-            android:text="Thank you for choosing app name"
+            android:text="@string/create_account_title"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -32,7 +32,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
-            android:text="Create an account with"
+            android:text="@string/create_account_primary_method"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/create_account_title" />
@@ -65,7 +65,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="30dp"
-            android:text="or continue with mobile number"
+            android:text="@string/create_account_second_method"
             app:layout_constraintEnd_toStartOf="@id/create_account_separator_2"
             app:layout_constraintStart_toEndOf="@id/create_account_separator_1"
             app:layout_constraintTop_toBottomOf="@+id/sign_in_button" />
@@ -82,44 +82,58 @@
             app:layout_constraintTop_toTopOf="@+id/create_method_separator_title" />
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/create_account_method_firstname"
+            android:id="@+id/create_account_method_first_name"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:layout_marginEnd="8dp"
+            app:errorEnabled="true"
+            app:errorText="@{@string/first_name_error_text}"
+            app:errorTextBool="@{viewModel.firstNameError}"
             app:layout_constraintEnd_toStartOf="@id/create_account_method_guideline"
             app:layout_constraintStart_toStartOf="@id/create_account_separator_1"
             app:layout_constraintTop_toBottomOf="@id/create_method_separator_title">
 
+            <!--suppress AndroidUnknownAttribute -->
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/create_account_method_first_name_field"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="First Name*"
+                android:hint="@string/first_name_form"
                 android:imeOptions="actionNext"
                 android:inputType="text"
-                android:maxLines="1" />
+                android:maxLines="1"
+                android:onTextChanged="@{(s, start, before, count) -> viewModel.onFirstNameChanged(s)}"
+                android:text="@={viewModel.firstName}" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/create_account_method_lastname"
+            android:id="@+id/create_account_method_last_name"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginTop="20dp"
+            app:errorEnabled="true"
+            app:errorText="@{@string/last_name_error_text}"
+            app:errorTextBool="@{viewModel.lastNameError}"
             app:layout_constraintEnd_toEndOf="@id/create_account_separator_2"
             app:layout_constraintStart_toEndOf="@id/create_account_method_guideline"
             app:layout_constraintTop_toBottomOf="@id/create_method_separator_title">
 
+            <!--suppress AndroidUnknownAttribute -->
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/create_account_method_last_name_field"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Last Name*"
+                android:hint="@string/last_name_form"
                 android:imeOptions="actionNext"
                 android:inputType="text"
-                android:maxLines="1" />
+                android:maxLines="1"
+                android:onTextChanged="@{(s, start, before, count) -> viewModel.onLastNameChanged(s)}"
+                android:text="@={viewModel.lastName}" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -128,18 +142,24 @@
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="15dp"
-            app:layout_constraintEnd_toEndOf="@id/create_account_method_lastname"
-            app:layout_constraintStart_toStartOf="@id/create_account_method_firstname"
-            app:layout_constraintTop_toBottomOf="@id/create_account_method_firstname">
+            android:layout_marginTop="5dp"
+            app:errorEnabled="true"
+            app:errorText="@{@string/email_error_text}"
+            app:errorTextBool="@{viewModel.emailError}"
+            app:layout_constraintEnd_toEndOf="@id/create_account_method_last_name"
+            app:layout_constraintStart_toStartOf="@id/create_account_method_first_name"
+            app:layout_constraintTop_toBottomOf="@id/create_account_method_first_name">
 
+            <!--suppress AndroidUnknownAttribute -->
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Email"
+                android:hint="@string/email_optional_form"
                 android:imeOptions="actionNext"
                 android:inputType="textEmailAddress"
-                android:maxLines="1" />
+                android:maxLines="1"
+                android:onTextChanged="@{(s, start, before, count) -> viewModel.onEmailChanged(s)}"
+                android:text="@={viewModel.email}" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -148,20 +168,26 @@
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="15dp"
+            android:layout_marginTop="5dp"
+            app:errorEnabled="true"
+            app:errorText="@{viewModel.mobileNumber.length == 0 ? @string/mobile_number_error_text_2 : @string/mobile_number_error_text_1}"
+            app:errorTextBool="@{viewModel.mobileNumberError}"
             app:layout_constraintEnd_toEndOf="@id/create_account_method_email"
             app:layout_constraintStart_toStartOf="@id/create_account_method_email"
             app:layout_constraintTop_toBottomOf="@id/create_account_method_email"
             app:prefixText="+91">
 
+            <!--suppress AndroidUnknownAttribute -->
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Mobile Number*"
+                android:hint="@string/mobile_number_form"
                 android:imeOptions="actionNext"
-                android:inputType="phone"
+                android:inputType="number"
                 android:maxLength="10"
-                android:maxLines="1" />
+                android:maxLines="1"
+                android:onTextChanged="@{(s, start, before, count) -> viewModel.onMobileNumberChanged(s)}"
+                android:text="@={viewModel.mobileNumber}" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -170,22 +196,25 @@
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="15dp"
+            android:layout_marginTop="5dp"
             app:endIconMode="password_toggle"
             app:errorEnabled="true"
-            app:helperText="enter a minimum of 8 characters containing at least one special character and a number"
-            app:helperTextEnabled="true"
+            app:errorText="@{viewModel.password.length == 0 ? @string/password_error_text_1 : @string/password_error_text_2}"
+            app:errorTextBool="@{viewModel.passwordError}"
             app:layout_constraintEnd_toEndOf="@id/create_account_method_mobile"
             app:layout_constraintStart_toStartOf="@id/create_account_method_mobile"
             app:layout_constraintTop_toBottomOf="@id/create_account_method_mobile">
 
+            <!--suppress AndroidUnknownAttribute -->
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Password*"
+                android:hint="@string/password_form"
                 android:imeOptions="actionDone"
                 android:inputType="textPassword"
-                android:maxLines="1" />
+                android:maxLines="1"
+                android:onTextChanged="@{(s, start, before, count) -> viewModel.onPasswordChanged(s)}"
+                android:text="@={viewModel.password}" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -196,9 +225,15 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:text="Next"
+            app:email="@{viewModel.emailError}"
+            app:firstName="@{viewModel.firstNameError}"
+            app:formLength="@{viewModel.buttonState}"
+            app:lastName="@{viewModel.lastNameError}"
             app:layout_constraintEnd_toEndOf="@id/create_account_method_password"
             app:layout_constraintStart_toStartOf="@id/create_account_method_password"
-            app:layout_constraintTop_toBottomOf="@id/create_account_method_password" />
+            app:layout_constraintTop_toBottomOf="@id/create_account_method_password"
+            app:mobileNumber="@{viewModel.mobileNumberError}"
+            app:password="@{viewModel.passwordError}" />
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/create_account_method_guideline"

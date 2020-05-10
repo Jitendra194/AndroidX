@@ -1,7 +1,6 @@
 package com.pills.createaccount.views
 
-import android.util.Log
-import android.view.View
+import androidx.databinding.ObservableBoolean
 import androidx.databinding.ObservableField
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -14,23 +13,31 @@ import javax.inject.Inject
 class EnterUserDetailsViewModel @Inject constructor() : ViewModel() {
 
     val dobField = ObservableField<String>()
-    val mobileNumber = ObservableField<String>()
-    val gender = ObservableField<String>()
+    val mobileField = ObservableField<String>()
+    val genderField = ObservableField<String>()
     val nameInTitle = ObservableField<String>()
 
-    private val _pageData = MutableLiveData<List<String?>>()
-    val pageData: LiveData<List<String?>>
-        get() = _pageData
+    val mobileError = ObservableBoolean(false)
+    val dobError = ObservableBoolean(false)
+    val genderError = ObservableBoolean(false)
 
-    fun onClickSubmit(view: View) {
-        _pageData.value = listOf(nameInTitle.get(), dobField.get(), mobileNumber.get(), gender.get())
-    }
+    private val _buttonState = MutableLiveData(false)
+    val buttonState: LiveData<Boolean>
+        get() = _buttonState.apply {
+            value = !dobField.get().isNullOrBlank() && !mobileField.get().isNullOrBlank() && !genderField.get().isNullOrBlank()
+        }
 
-    fun getCalendar(showPicker: (MaterialDatePicker<Long>) -> Unit): MaterialDatePicker<Long> =
+    inline fun getCalendar(showPicker: (MaterialDatePicker<Long>) -> Unit): MaterialDatePicker<Long> =
         (MaterialDatePicker.Builder.datePicker()).setupDOBCalendar().apply {
             showPicker(this)
             addOnPositiveButtonClickListener { dobField.set(it.convertToDateString()) }
         }
+
+    fun onMobileTextChanged(s: CharSequence) = mobileError.set(s.contains(" ") || s.length < 10)
+
+    fun onGenderTextChanged(s: CharSequence) = genderError.set(s.isBlank())
+
+    fun onDobTextChanged(s: CharSequence) = dobError.set(s.isBlank())
 
     fun setArgsInViewModel(name: String): Unit = nameInTitle.set(name)
 }

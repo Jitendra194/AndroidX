@@ -34,7 +34,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
-            android:text="We need a few more details to finish your profile"
+            android:text="@string/user_details_subtitle"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/title_text"
@@ -51,14 +51,16 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/subtitle_text">
 
+            <!--suppress AndroidUnknownAttribute -->
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/enter_details_dob_field"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:focusable="false"
-                android:hint="Date of birth*"
+                android:hint="@string/date_of_birth_form"
                 android:imeOptions="actionNext"
                 android:inputType="date"
+                android:onTextChanged="@{(s, start, before, count) -> viewModel.onDobTextChanged(s)}"
                 android:text="@{viewModel.dobField}" />
 
         </com.google.android.material.textfield.TextInputLayout>
@@ -74,14 +76,16 @@
             app:layout_constraintStart_toEndOf="@id/create_Account_vertical_guideline"
             app:layout_constraintTop_toBottomOf="@id/subtitle_text">
 
+            <!--suppress AndroidUnknownAttribute -->
             <AutoCompleteTextView
                 android:id="@+id/enter_details_gender_field"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Gender*"
+                android:hint="@string/gender_form"
                 android:imeOptions="actionNext"
                 android:inputType="none"
-                android:text="@={viewModel.gender}" />
+                android:onTextChanged="@{(s, start, before, count) -> viewModel.onGenderTextChanged(s)}"
+                android:text="@={viewModel.genderField}" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -91,22 +95,30 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp"
+            android:focusable="true"
+            app:counterEnabled="true"
+            app:counterMaxLength="10"
             app:errorEnabled="true"
+            app:errorText="@{viewModel.mobileField.length == 0 ? @string/mobile_number_error_text_2 : @string/mobile_number_error_text_1}"
+            app:errorTextBool="@{viewModel.mobileError}"
             app:layout_constraintEnd_toEndOf="@id/enter_details_gender"
             app:layout_constraintStart_toStartOf="@id/enter_details_dob"
             app:layout_constraintTop_toBottomOf="@id/enter_details_dob"
             app:prefixText="+91">
 
+            <!--suppress AndroidUnknownAttribute -->
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/enter_details_mobile_field"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Mobile Number*"
+                android:hint="@string/mobile_number_form"
                 android:imeOptions="actionDone"
-                android:inputType="phone"
+                android:importantForAutofill="no"
+                android:inputType="number"
                 android:maxLength="10"
                 android:maxLines="1"
-                android:text="@={viewModel.mobileNumber}" />
+                android:onTextChanged="@{(s, start, before, count) -> viewModel.onMobileTextChanged(s)}"
+                android:text="@={viewModel.mobileField}" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -115,11 +127,14 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
-            android:onClick="@{viewModel::onClickSubmit}"
-            android:text="Submit"
+            android:text="@string/submit_form"
+            app:dob="@{viewModel.dobError}"
+            app:formLength="@{viewModel.buttonState}"
+            app:gender="@{viewModel.genderError}"
             app:layout_constraintEnd_toEndOf="@id/enter_details_mobile"
             app:layout_constraintStart_toStartOf="@id/enter_details_mobile"
-            app:layout_constraintTop_toBottomOf="@id/enter_details_mobile" />
+            app:layout_constraintTop_toBottomOf="@id/enter_details_mobile"
+            app:phoneNumber="@{viewModel.mobileError}" />
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/create_Account_vertical_guideline"
