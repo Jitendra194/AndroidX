@@ -2,6 +2,7 @@ package com.pills.mydemoapplication.feature_package
 
 import android.content.Context
 import android.content.Intent
+import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.pills.mydemoapplication.R
 import com.pills.mydemoapplication.base_application.BaseApplicationClass
 import kotlin.reflect.KClass
@@ -36,6 +37,7 @@ interface Feature<T> {
 interface AccountCreationFeature : Feature<AccountCreationFeature.Dependencies> {
     interface Dependencies {
         val application: BaseApplicationClass
+        val googleSignInClient: GoogleSignInClient
     }
 }
 
@@ -67,5 +69,6 @@ interface LoginFeature : Feature<LoginFeature.Dependencies> {
     interface Dependencies {
         val application: BaseApplicationClass
         val featureManager: FeatureManager
+        val googleSignInClient: GoogleSignInClient
     }
 }

@@ -11,27 +11,4 @@ import dagger.Module
 import dagger.Provides
 
 @Module
-object CreateAccountModule {
-
-    @Provides
-    @CreateAccountScope
-    fun providesCreateAccountActivityContext(activity: CreateAccountActivity): Context = activity.baseContext
-
-    @Provides
-    @CreateAccountScope
-    fun providesResources(context: Context): Resources = context.resources
-
-    @Provides
-    @CreateAccountScope
-    fun providesGoogleSignInOptions(): GoogleSignInOptions {
-        return GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-            .requestEmail()
-            .build()
-    }
-
-    @Provides
-    @CreateAccountScope
-    fun providesGoogleSignInClient(context: Context, signInOptions: GoogleSignInOptions): GoogleSignInClient {
-        return GoogleSignIn.getClient(context, signInOptions)
-    }
-}
+object CreateAccountModule
