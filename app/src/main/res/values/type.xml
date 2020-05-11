@@ -51,4 +51,8 @@
     <style name="TextAppearance.MyTheme.Overline" parent="TextAppearance.MaterialComponents.Overline">
         <!--Your custom type style here-->
     </style>
+    
+    <style name="TextAppearance.myApp.button" parent="TextAppearance.MaterialComponents.Button">
+        <item name="android:textStyle">bold</item>
+    </style>
 </resources>

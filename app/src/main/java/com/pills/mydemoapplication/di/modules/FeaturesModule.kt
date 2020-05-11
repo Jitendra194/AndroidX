@@ -1,5 +1,6 @@
 package com.pills.mydemoapplication.di.modules
 
+import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.pills.mydemoapplication.base_application.BaseApplicationClass
 import com.pills.mydemoapplication.feature_package.*
 import dagger.Module
@@ -11,10 +12,12 @@ object FeaturesModule {
 
     @Provides
     @Singleton
-    fun providesCreateAccountFeatureDependencies(application: BaseApplicationClass): AccountCreationFeature.Dependencies {
+    fun providesCreateAccountFeatureDependencies(application: BaseApplicationClass, googleSignInClient: GoogleSignInClient): AccountCreationFeature.Dependencies {
         return object : AccountCreationFeature.Dependencies {
             override val application: BaseApplicationClass
                 get() = application
+            override val googleSignInClient: GoogleSignInClient
+                get() = googleSignInClient
         }
     }
 
@@ -56,12 +59,14 @@ object FeaturesModule {
 
     @Provides
     @Singleton
-    fun providesLoginFeatureDependencies(application: BaseApplicationClass, featureManager: FeatureManager): LoginFeature.Dependencies {
+    fun providesLoginFeatureDependencies(application: BaseApplicationClass, featureManager: FeatureManager, googleSignInClient: GoogleSignInClient): LoginFeature.Dependencies {
         return object : LoginFeature.Dependencies {
             override val application: BaseApplicationClass
                 get() = application
             override val featureManager: FeatureManager
                 get() = featureManager
+            override val googleSignInClient: GoogleSignInClient
+                get() = googleSignInClient
         }
     }
 }
