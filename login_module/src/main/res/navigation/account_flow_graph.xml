@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    app:startDestination="@id/loginFragment"
+    tools:ignore="UnusedNavigation">
+
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="com.pills.login_module.views.login.LoginFragment"
+        android:label="LoginFragment"
+        tools:layout="@layout/login_fragment">
+        <action
+            android:id="@+id/action_loginFragment_to_createAccountMethodFragment"
+            app:destination="@id/createAccountMethodFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:launchSingleTop="true"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
+        <action
+            android:id="@+id/action_loginFragment_to_enterUserDetailsFragment"
+            app:destination="@id/enterUserDetailsFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/createAccountMethodFragment"
+        android:name="com.pills.login_module.views.create_account.CreateAccountMethodFragment"
+        android:label="CreateAccountMethodFragment"
+        tools:layout="@layout/fragment_create_account_method" >
+        <action
+            android:id="@+id/action_createAccountMethodFragment_to_enterUserDetailsFragment"
+            app:destination="@id/enterUserDetailsFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:launchSingleTop="true"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
+    </fragment>
+    <fragment
+        android:id="@+id/enterUserDetailsFragment"
+        android:name="com.pills.login_module.views.google_extra.EnterUserDetailsFragment"
+        android:label="EnterUserDetailsFragment"
+        tools:layout="@layout/fragment_enter_user_details">
+        <argument
+            android:name="GivenName"
+            app:argType="string" />
+    </fragment>
+
+</navigation>

@@ -3,13 +3,13 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/launch_nav_graph"
-    app:startDestination="@id/loginFragment"
+    app:startDestination="@id/accountFlow"
     tools:ignore="UnusedNavigation">
 
-    <fragment
-        android:id="@+id/loginFragment"
-        android:name="com.pills.login_module.views.LoginFragment"
-        android:label="LoginFragment"
-        app:moduleName="login_module" />
+    <include-dynamic
+        android:id="@+id/accountFlow"
+        app:moduleName="login_module"
+        app:graphResName="account_flow_graph"
+        app:graphPackage="com.pills.mydemoapplication.login_module" />
 
 </navigation>

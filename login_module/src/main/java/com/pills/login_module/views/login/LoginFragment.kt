@@ -1,4 +1,4 @@
-package com.pills.login_module.views
+package com.pills.login_module.views.login
 
 import android.content.Context
 import android.os.Bundle
@@ -10,6 +10,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
+import androidx.navigation.fragment.findNavController
 import com.pills.login_module.R
 import com.pills.login_module.databinding.LoginFragmentBinding
 import com.pills.login_module.featureImpl.loginFeatureMainComponent
@@ -18,7 +19,6 @@ import dagger.android.AndroidInjector
 import dagger.android.DispatchingAndroidInjector
 import dagger.android.HasAndroidInjector
 import javax.inject.Inject
-
 
 class LoginFragment : Fragment(), HasAndroidInjector {
 
@@ -34,7 +34,7 @@ class LoginFragment : Fragment(), HasAndroidInjector {
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
-        loginFeatureMainComponent.loginFeatureComponent
+        loginFeatureMainComponent.loginComponent
             .create(this)
             .inject(this)
     }
@@ -50,20 +50,10 @@ class LoginFragment : Fragment(), HasAndroidInjector {
     }
 
     private fun setupButtonLaunchEvents() {
-        binding.launchCreateAccount.setOnClickListener { getCreateAccountScreen() }
-        binding.loginButton.setOnClickListener { startActivity(viewModel.launchHQ()) }
-        viewModel.isFeatureEventTriggered.observe(viewLifecycleOwner, Observer {
-            Toast.makeText(context, "$it is installed successfully", Toast.LENGTH_SHORT).show()
-            getCreateAccountScreen()
-        })
-    }
-
-    private fun getCreateAccountScreen() {
-        if (viewModel.isCreateAccountFeatureInstalled()) {
-            startActivity(viewModel.launchSignupScreen())
-        } else {
-            viewModel.installCreateAccountFeature()
+        binding.launchCreateAccount.setOnClickListener {
+            findNavController().navigate(LoginFragmentDirections.actionLoginFragmentToCreateAccountMethodFragment())
         }
+        binding.loginButton.setOnClickListener { startActivity(viewModel.launchHQ()) }
     }
 
     override fun androidInjector(): AndroidInjector<Any> = dispatchingAndroidInjector

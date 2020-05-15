@@ -15,8 +15,6 @@ interface CreateAccountMainComponent : AndroidInjector<AccountCreationFeatureImp
 
     val createAccountComponentFactory: CreateAccountComponent.Factory
 
-    val accountCreationFeatureImpl: AccountCreationFeatureImpl
-
     @Component.Factory
     interface Factory {
         fun create(
