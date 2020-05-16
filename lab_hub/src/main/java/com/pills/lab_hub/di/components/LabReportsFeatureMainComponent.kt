@@ -14,7 +14,6 @@ import dagger.android.AndroidInjector
 interface LabReportsFeatureMainComponent : AndroidInjector<LabReportsFeatureImpl> {
 
     val labReportsFeatureComponent: LabReportsFeatureComponent.Factory
-    val labReportsFeatureImpl: LabReportsFeatureImpl
 
     @Component.Factory
     interface Factory {

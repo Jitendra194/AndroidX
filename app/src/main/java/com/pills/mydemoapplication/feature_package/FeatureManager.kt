@@ -32,7 +32,6 @@ private inline fun <reified T : Feature<D>, D> FeatureManager.injectFeature(
 }
 
 private fun FeatureManager.selectFeature(featureName: FeatureName) = when (featureName) {
-    AccountCreationFeature -> injectFeature<AccountCreationFeature, AccountCreationFeature.Dependencies>(appComponent.accountCreationFeature, featureName)
     PillsFeature -> injectFeature<PillsFeature, PillsFeature.Dependencies>(appComponent.pillsFeature, featureName)
     LabReportsFeature -> injectFeature<LabReportsFeature, LabReportsFeature.Dependencies>(appComponent.labReportsFeature, featureName)
     PrescriptionsFeature -> injectFeature<PrescriptionsFeature, PrescriptionsFeature.Dependencies>(appComponent.prescriptionsFeature, featureName)

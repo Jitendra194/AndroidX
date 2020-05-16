@@ -10,7 +10,7 @@
 
     <string name="create_account">CreateAccountFeature</string>
     <string name="not_with_us_yet">Not with us yet?</string>
-    <string name="sign_up"><u>Sign Up</u>.</string>
+    <string name="sign_up">Sign Up</string>
     <string name="login">Login</string>
     <string name="title_pills_module">Pill Order/Refill</string>
     <string name="lab_reports">Lab Reports</string>

@@ -14,7 +14,6 @@ import dagger.android.AndroidInjector
 interface PillsFeatureMainComponent : AndroidInjector<PillsFeatureImpl> {
 
     val pillsFeatureComponent: PillsFeatureComponent.Factory
-    val pillsFeatureImpl: PillsFeatureImpl
 
     @Component.Factory
     interface Factory {

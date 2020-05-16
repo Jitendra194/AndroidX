@@ -14,7 +14,6 @@ import dagger.android.AndroidInjector
 interface WellnessTipsFeatureMainComponent : AndroidInjector<WellnessTipsFeatureImpl> {
 
     val wellnessTipsFeatureComponent: WellnessTipsFeatureComponent.Factory
-    val wellnessTipsFeatureImpl: WellnessTipsFeatureImpl
 
     @Component.Factory
     interface Factory {

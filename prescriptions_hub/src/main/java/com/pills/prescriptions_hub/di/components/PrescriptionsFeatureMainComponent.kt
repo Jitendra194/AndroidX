@@ -14,7 +14,6 @@ import dagger.android.AndroidInjector
 interface PrescriptionsFeatureMainComponent : AndroidInjector<PrescriptionsFeatureImpl> {
 
     val prescriptionsFeatureComponent: PrescriptionsFeatureComponent.Factory
-    val prescriptionsFeatureImpl: PrescriptionsFeatureImpl
 
     @Component.Factory
     interface Factory {

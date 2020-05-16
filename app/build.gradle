@@ -2,6 +2,7 @@ apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
+apply plugin: 'androidx.navigation.safeargs.kotlin'
 apply from: '../deps.gradle'
 
 android {
@@ -27,10 +28,13 @@ android {
     dataBinding {
         enabled = true
     }
-    dynamicFeatures = [":create_account_module", ":pills_hub", ":lab_hub", ":prescriptions_hub", ":wellnessTips_hub", ":login_module"]
+    dynamicFeatures = [":pills_hub", ":lab_hub", ":prescriptions_hub", ":wellnessTips_hub", ":login_module"]
 }
 
 dependencies {
+    api 'androidx.legacy:legacy-support-v4:1.0.0'
+    api 'androidx.lifecycle:lifecycle-extensions:2.2.0'
+    api 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.2.0'
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
     //android core
