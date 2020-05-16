@@ -34,19 +34,7 @@ class CreateAccountMethodViewModel @Inject constructor(
             value = !firstName.get().isNullOrBlank() && !lastName.get().isNullOrBlank() && !mobileNumber.get().isNullOrBlank() && !password.get().isNullOrBlank() && !emailError.get()
         }
 
-    companion object {
-        const val RC_SIGN_IN: Int = 0
-    }
-
     fun getGoogleSignInIntent(): Intent = mGoogleSignInClient.signInIntent
-
-    inline fun handleSignInResult(task: Task<GoogleSignInAccount>, onSuccess: (String) -> Unit, onFailure: (ApiException?) -> Unit) {
-        try {
-            task.getResult(ApiException::class.java)?.let { onSuccess(it.givenName ?: "") } ?: onFailure(null)
-        } catch (e: ApiException) {
-            onFailure(e)
-        }
-    }
 
     fun onFirstNameChanged(s: CharSequence) = firstNameError.set(s.isBlank())
 

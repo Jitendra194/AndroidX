@@ -1,4 +1,4 @@
-package com.pills.mydemoapplication.di.modules
+package com.pills.mydemoapplication.di.viewmodel_factory
 
 import androidx.lifecycle.ViewModelProvider
 import com.pills.mydemoapplication.di.viewmodel_factory.ViewModelProviderFactory

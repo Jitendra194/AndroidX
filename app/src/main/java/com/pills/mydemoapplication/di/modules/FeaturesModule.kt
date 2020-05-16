@@ -12,17 +12,6 @@ object FeaturesModule {
 
     @Provides
     @Singleton
-    fun providesCreateAccountFeatureDependencies(application: BaseApplicationClass, googleSignInClient: GoogleSignInClient): AccountCreationFeature.Dependencies {
-        return object : AccountCreationFeature.Dependencies {
-            override val application: BaseApplicationClass
-                get() = application
-            override val googleSignInClient: GoogleSignInClient
-                get() = googleSignInClient
-        }
-    }
-
-    @Provides
-    @Singleton
     fun providesPillsFeatureDependencies(application: BaseApplicationClass): PillsFeature.Dependencies {
         return object : PillsFeature.Dependencies {
             override val application: BaseApplicationClass

@@ -12,9 +12,10 @@ import javax.inject.Inject
 
 class LoginViewModel @Inject constructor(
     private val application: BaseApplicationClass,
-    private val featureManager: FeatureManager,
     private val mGoogleSignInClient: GoogleSignInClient
 ) : ViewModel() {
+
+    fun getGoogleSignInIntent(): Intent = mGoogleSignInClient.signInIntent
 
     fun launchHQ() = Intent(application, HQActivity::class.java)
 }

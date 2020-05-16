@@ -15,7 +15,8 @@ import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.pills.login_module.R
 import com.pills.login_module.databinding.FragmentCreateAccountMethodBinding
 import com.pills.login_module.featureImpl.loginFeatureMainComponent
-import com.pills.login_module.views.create_account.CreateAccountMethodViewModel.Companion.RC_SIGN_IN
+import com.pills.login_module.utils.RC_SIGN_IN
+import com.pills.login_module.utils.handleSignInResult
 import com.pills.mydemoapplication.di.viewmodel_factory.ViewModelProviderFactory
 import dagger.android.AndroidInjector
 import dagger.android.DispatchingAndroidInjector
@@ -24,7 +25,7 @@ import dagger.android.support.DaggerFragment
 import kotlinx.android.synthetic.main.fragment_create_account_method.*
 import javax.inject.Inject
 
-class CreateAccountMethodFragment : DaggerFragment() {
+class CreateAccountMethodFragment : Fragment(), HasAndroidInjector {
 
     @Inject
     lateinit var dispatchingAndroidInjector: DispatchingAndroidInjector<Any>
@@ -59,7 +60,7 @@ class CreateAccountMethodFragment : DaggerFragment() {
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         if (requestCode == RC_SIGN_IN) {
-            createAccountMethodViewModel.handleSignInResult(GoogleSignIn.getSignedInAccountFromIntent(data), {
+            GoogleSignIn.getSignedInAccountFromIntent(data).handleSignInResult({
                 findNavController().navigate(CreateAccountMethodFragmentDirections.actionCreateAccountMethodFragmentToEnterUserDetailsFragment(it))
             }, {
                 Toast.makeText(context, "Google Sign In Failed with Status Code: ${it?.statusCode}", Toast.LENGTH_SHORT).show()

@@ -1,5 +1,6 @@
 package com.pills.mydemoapplication.di.modules
 
+import com.pills.mydemoapplication.di.viewmodel_providers.ViewModelProviderModule
 import com.pills.mydemoapplication.views.HQActivity
 import com.pills.mydemoapplication.views.LaunchActivity
 import dagger.Module
