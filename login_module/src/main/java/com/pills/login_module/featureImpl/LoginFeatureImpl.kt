@@ -12,10 +12,6 @@ internal lateinit var loginFeatureMainComponent: LoginFeatureMainComponent
 
 @AutoService(LoginFeature::class)
 class LoginFeatureImpl : LoginFeature {
-    override fun getLaunchIntent(context: Context): Intent {
-        TODO("Not yet implemented")
-    }
-
     override fun inject(dependencies: LoginFeature.Dependencies) {
         if (::loginFeatureMainComponent.isInitialized) {
             return

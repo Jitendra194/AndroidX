@@ -12,10 +12,6 @@ internal lateinit var prescriptionsFeatureMainComponent: PrescriptionsFeatureMai
 
 @AutoService(PrescriptionsFeature::class)
 class PrescriptionsFeatureImpl : PrescriptionsFeature {
-    override fun getLaunchIntent(context: Context): Intent {
-        TODO("Not yet implemented")
-    }
-
     override fun inject(dependencies: PrescriptionsFeature.Dependencies) {
         if (::prescriptionsFeatureMainComponent.isInitialized) {
             return

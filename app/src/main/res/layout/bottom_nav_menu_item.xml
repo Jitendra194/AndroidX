@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="item"
+            type="com.pills.mydemoapplication.views.hq.nav_drawer_adapter.NavigationModelItem.NavMenuItem" />
+
+        <variable
+            name="itemClick"
+            type="com.pills.mydemoapplication.views.hq.nav_drawer_adapter.NavigationAdapter.NavigationAdapterListener" />
+    </data>
+
+    <CheckedTextView
+        android:id="@+id/checkedTextView"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:background="?attr/selectableItemBackground"
+        android:checked="@{item.checked}"
+        android:drawablePadding="32dp"
+        android:ellipsize="end"
+        android:gravity="center_vertical|start"
+        android:lines="1"
+        android:onClick="@{() -> itemClick.onNavItemClicked(item)}"
+        android:paddingStart="32dp"
+        android:paddingEnd="32dp"
+        android:text="@{item.titleRes}"
+        android:textAppearance="?attr/textAppearanceBody2"
+        android:textColor="@color/color_navigation_drawer_menu_item"
+        app:drawableStart="@{item.icon}"
+        app:drawableTint="@color/color_navigation_drawer_menu_item"
+        tools:text="HOME" />
+</layout>

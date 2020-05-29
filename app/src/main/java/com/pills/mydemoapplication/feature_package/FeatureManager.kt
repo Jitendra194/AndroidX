@@ -1,6 +1,5 @@
 package com.pills.mydemoapplication.feature_package
 
-import android.content.Intent
 import android.widget.Toast
 import com.google.android.play.core.splitinstall.*
 import com.google.android.play.core.splitinstall.model.SplitInstallSessionStatus
@@ -8,7 +7,6 @@ import com.pills.mydemoapplication.base_application.BaseApplicationClass
 import com.pills.mydemoapplication.feature_package.FeatureName.*
 import com.pills.mydemoapplication.base_application.appComponent
 import java.util.*
-import kotlin.reflect.KClass
 
 infix fun FeatureManager.getFeature(featureName: FeatureName) = selectFeature(featureName)
 

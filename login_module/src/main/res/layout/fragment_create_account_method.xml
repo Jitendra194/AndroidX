@@ -221,11 +221,11 @@
 
         <Button
             android:id="@+id/create_account_method_next_button"
-            style="@style/myButton"
+            style="@style/brandButton"
             android:layout_width="match_parent"
             android:layout_height="70dp"
             android:layout_marginTop="20dp"
-            android:text="Next"
+            android:text="@string/next"
             app:email="@{viewModel.emailError}"
             app:firstName="@{viewModel.firstNameError}"
             app:formLength="@{viewModel.buttonState}"

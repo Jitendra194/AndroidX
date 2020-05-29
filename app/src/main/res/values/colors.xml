@@ -19,4 +19,6 @@
     <!--Color on secondary (light), color on background (light),-->
     <!--color on surface (light)-->
     <color name="black_900">#000000</color>
+
+    <color name="nav_bar">#6200ee</color>
 </resources>

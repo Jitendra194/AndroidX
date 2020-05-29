@@ -3,66 +3,76 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <androidx.drawerlayout.widget.DrawerLayout
-        android:id="@+id/hq_drawer_layout"
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:id="@+id/layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="?attr/colorControlHighlight"
-        android:fitsSystemWindows="true">
+        app:layoutFullscreen="@{true}"
+        tools:context=".views.hq.HQActivity">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
+        <fragment
+            android:id="@+id/main_hq_navigation"
+            android:name="androidx.navigation.dynamicfeatures.fragment.DynamicNavHostFragment"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <com.google.android.material.appbar.AppBarLayout
-                android:id="@+id/main_hq_appbar"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:layout_constraintTop_toTopOf="parent">
-
-                <com.google.android.material.appbar.MaterialToolbar
-                    android:id="@+id/main_hq_toolbar"
-                    style="@style/Widget.MaterialComponents.Toolbar.PrimarySurface"
-                    android:layout_width="match_parent"
-                    android:layout_height="?attr/actionBarSize" />
-
-            </com.google.android.material.appbar.AppBarLayout>
-
-            <fragment
-                android:id="@+id/main_hq_navigation"
-                android:name="androidx.navigation.dynamicfeatures.fragment.DynamicNavHostFragment"
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                app:defaultNavHost="true"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/main_hq_appbar"
-                app:navGraph="@navigation/hq_nav_graph"
-                tools:ignore="FragmentTagUsage" />
-
-
-            <com.google.android.material.bottomnavigation.BottomNavigationView
-                android:id="@+id/bottom_navigation"
-                style="@style/Widget.MaterialComponents.BottomNavigationView"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:menu="@menu/hq_navigation_menu" />
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-        <com.google.android.material.navigation.NavigationView
-            android:id="@+id/nav_view"
-            style="?attr/navigationViewStyle"
-            android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:layout_gravity="start"
-            android:backgroundTint="?colorSurface"
-            app:itemTextAppearance="?textAppearanceBody2"
-            app:itemTextColor="@color/material_on_surface_emphasis_high_type"
-            android:fitsSystemWindows="true"
-            app:headerLayout="@layout/hq_navigation_drawer_header"
-            app:menu="@menu/hq_navigation_drawer_menu" />
+            app:defaultNavHost="true"
+            app:navGraph="@navigation/hq_nav_graph"
+            tools:ignore="FragmentTagUsage" />
 
-    </androidx.drawerlayout.widget.DrawerLayout>
+        <fragment
+            android:id="@+id/bottom_nav_drawer"
+            android:name="com.pills.mydemoapplication.views.hq.bottom_nav_drawer.BottomNavigationDrawerFragment"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+        <com.google.android.material.bottomappbar.BottomAppBar
+            android:id="@+id/bar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            app:fabAlignmentMode="end"
+            app:fabCradleMargin="8dp"
+            app:fabCradleRoundedCornerRadius="32dp"
+            app:hideOnScroll="true">
+
+            <LinearLayout
+                android:id="@+id/bottom_app_bar_content_container"
+                android:layout_width="wrap_content"
+                android:layout_height="48dp"
+                android:layout_marginVertical="4dp"
+                android:foreground="@drawable/bottom_app_bar_title_foreground"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingHorizontal="4dp"
+                tools:ignore="UnusedAttribute">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/bottom_app_bar_chevron"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    app:srcCompat="@drawable/ic_arrow_drop_up"
+                    app:tint="?attr/colorOnPrimarySurface" />
+
+                <TextView
+                    android:id="@+id/bottom_app_bar_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginHorizontal="8dp"
+                    android:text="HOME"
+                    android:textAppearance="?attr/textAppearanceBody1"
+                    android:textColor="?attr/colorControlNormal" />
+            </LinearLayout>
+
+        </com.google.android.material.bottomappbar.BottomAppBar>
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fab"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_anchor="@id/bar" />
+
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
 </layout>

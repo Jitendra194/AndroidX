@@ -12,10 +12,6 @@ internal lateinit var labReportsFeatureMainComponent: LabReportsFeatureMainCompo
 
 @AutoService(LabReportsFeature::class)
 class LabReportsFeatureImpl : LabReportsFeature {
-    override fun getLaunchIntent(context: Context): Intent {
-        TODO("Not yet implemented")
-    }
-
     override fun inject(dependencies: LabReportsFeature.Dependencies) {
         if (::labReportsFeatureMainComponent.isInitialized) {
             return

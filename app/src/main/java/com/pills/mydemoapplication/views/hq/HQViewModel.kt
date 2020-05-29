@@ -1,4 +1,4 @@
-package com.pills.mydemoapplication.views
+package com.pills.mydemoapplication.views.hq
 
 import androidx.lifecycle.ViewModel
 import com.pills.mydemoapplication.feature_package.FeatureName.PillsFeature

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="divider"
+            type="com.pills.mydemoapplication.views.hq.nav_drawer_adapter.NavigationModelItem.NavDivider" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingTop="5dp"
+        android:paddingBottom="5dp"
+        android:paddingHorizontal="32dp">
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_weight="1"
+            android:background="@android:color/darker_gray"
+            android:paddingVertical="18dp" />
+
+        <TextView
+            android:id="@+id/divider_subtitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:paddingTop="18dp"
+            android:paddingBottom="9dp"
+            android:text="@{divider.title}"
+            tools:text="Subtitle"
+            android:textAllCaps="true"
+            android:textColor="?colorOnPrimary"
+            android:textAppearance="?textAppearanceSubtitle1" />
+    </LinearLayout>
+</layout>

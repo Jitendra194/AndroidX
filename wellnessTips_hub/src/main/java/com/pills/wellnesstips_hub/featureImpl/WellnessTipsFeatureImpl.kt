@@ -12,10 +12,6 @@ internal lateinit var wellnessTipsFeatureMainComponent: WellnessTipsFeatureMainC
 
 @AutoService(WellnessTipsFeature::class)
 class WellnessTipsFeatureImpl : WellnessTipsFeature {
-    override fun getLaunchIntent(context: Context): Intent {
-        TODO("Not yet implemented")
-    }
-
     override fun inject(dependencies: WellnessTipsFeature.Dependencies) {
         if (::wellnessTipsFeatureMainComponent.isInitialized) {
             return
