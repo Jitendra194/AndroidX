@@ -1,11 +1,7 @@
 package com.pills.mydemoapplication.feature_package
 
-import android.content.Context
-import android.content.Intent
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
-import com.pills.mydemoapplication.R
 import com.pills.mydemoapplication.base_application.BaseApplicationClass
-import kotlin.reflect.KClass
 
 enum class FeatureName(val moduleName: String) {
     PillsFeature("pills_hub"),
@@ -16,13 +12,7 @@ enum class FeatureName(val moduleName: String) {
 }
 
 interface Feature<T> {
-    fun getLaunchIntent(context: Context): Intent
     fun inject(dependencies: T)
-
-    data class Info(
-        val id: FeatureName,
-        val name: String
-    )
 }
 
 interface PillsFeature : Feature<PillsFeature.Dependencies> {

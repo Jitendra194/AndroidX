@@ -1,7 +1,4 @@
 <resources>
-
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="create_account_title_string">Welcome! Glad we could serve you.</string>
     <string name="welcome_user">Welcome, %s!</string>
     <string name="first_name_form">First Name*</string>
@@ -24,5 +21,5 @@
     <string name="email_error_text">Please enter a valid email.</string>
     <string name="password_error_text_1">Please enter a password.</string>
     <string name="password_error_text_2">Enter at least 8 characters\nContains at least one digit\nContains one lower and upper case alphabet\nContains one special character: @#$%^&amp;!+= \nDoes not contain spaces</string>
-
+    <string name="next">Next</string>
 </resources>

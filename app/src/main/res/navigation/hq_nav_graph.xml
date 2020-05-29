@@ -3,8 +3,31 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/hq_nav_graph"
-    app:startDestination="@id/pillsFragment"
+    app:startDestination="@id/homeFragment"
     tools:ignore="UnusedNavigation">
+
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.pills.mydemoapplication.views.hq.home.HomeFragment"
+        android:label="home_fragment"
+        tools:layout="@layout/home_fragment" >
+        <action
+            android:id="@+id/action_homeFragment_to_pillsFragment"
+            app:destination="@id/pillsFragment"
+            app:launchSingleTop="true" />
+        <action
+            android:id="@+id/action_homeFragment_to_labReportsFragment"
+            app:destination="@id/labReportsFragment"
+            app:launchSingleTop="true" />
+        <action
+            android:id="@+id/action_homeFragment_to_prescriptionsFragment"
+            app:destination="@id/prescriptionsFragment"
+            app:launchSingleTop="true" />
+        <action
+            android:id="@+id/action_homeFragment_to_wellnessTipsFragment"
+            app:destination="@id/wellnessTipsFragment"
+            app:launchSingleTop="true" />
+    </fragment>
 
     <fragment
         app:moduleName="pills_hub"

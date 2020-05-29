@@ -1,4 +1,4 @@
-package com.pills.mydemoapplication.views
+package com.pills.mydemoapplication.views.launch
 
 import android.os.Bundle
 import androidx.activity.viewModels

@@ -12,10 +12,6 @@ internal lateinit var pillsFeatureMainComponent: PillsFeatureMainComponent
 
 @AutoService(PillsFeature::class)
 class PillsFeatureImpl : PillsFeature {
-    override fun getLaunchIntent(context: Context): Intent {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-    }
-
     override fun inject(dependencies: PillsFeature.Dependencies) {
         if (::pillsFeatureMainComponent.isInitialized) {
             return
