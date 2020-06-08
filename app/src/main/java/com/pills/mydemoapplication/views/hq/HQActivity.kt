@@ -1,10 +1,8 @@
 package com.pills.mydemoapplication.views.hq
 
-import android.graphics.Color
-import android.os.Build
 import android.os.Bundle
+import android.util.Log
 import android.view.MenuItem
-import android.view.View
 import android.view.WindowManager
 import androidx.activity.viewModels
 import androidx.appcompat.widget.Toolbar
@@ -18,7 +16,6 @@ import com.pills.mydemoapplication.di.viewmodel_factory.ViewModelProviderFactory
 import com.pills.mydemoapplication.utils.animation_utils.HalfClockwiseRotateSlideAction
 import com.pills.mydemoapplication.utils.animation_utils.ShowHideFabStateAction
 import com.pills.mydemoapplication.views.hq.bottom_nav_drawer.BottomNavigationDrawerFragment
-import com.pills.mydemoapplication.views.hq.nav_drawer_adapter.NavigationAdapter
 import dagger.android.support.DaggerAppCompatActivity
 import kotlinx.android.synthetic.main.h_q_activity.*
 import javax.inject.Inject
@@ -40,12 +37,15 @@ class HQActivity : DaggerAppCompatActivity(), NavController.OnDestinationChanged
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.h_q_activity)
+        setupHomePage()
         setupStatusBar()
         setupNavigationController()
         setupFloatingActionButton()
         setUpBottomNavigation()
         setUpAppBar()
     }
+
+    private fun setupHomePage() = hqViewModel.launchHome()
 
     private fun setupStatusBar() = window.addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS)
 
@@ -68,7 +68,7 @@ class HQActivity : DaggerAppCompatActivity(), NavController.OnDestinationChanged
     }
 
     override fun onDestinationChanged(controller: NavController, destination: NavDestination, arguments: Bundle?) {
-
+        Log.d("DESTINATION", destination.label.toString())
     }
 
     override fun onMenuItemClick(item: MenuItem?): Boolean {

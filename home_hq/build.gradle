@@ -1,0 +1,38 @@
+apply plugin: "com.android.dynamic-feature"
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
+apply from: '../deps.gradle'
+
+android {
+    compileSdkVersion androidDependencies.compile_sdk_version
+    buildToolsVersion "29.0.3"
+
+    defaultConfig {
+        minSdkVersion androidDependencies.min_sdk_version
+        targetSdkVersion androidDependencies.target_sdk_version
+        versionCode 7
+        versionName "5.0.2"
+    }
+
+    kotlinOptions {
+        jvmTarget = "1.8"
+    }
+
+    buildFeatures{
+        dataBinding = true
+    }
+
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation project(':app')
+
+    //Dagger
+    kapt deps.dagger.compiler
+    kapt deps.dagger.android_compiler
+
+    //auto service
+    kapt deps.autoservice.autoservice
+}

@@ -20,19 +20,19 @@ android {
         jvmTarget = "1.8"
     }
     buildTypes {
-        /*debug {
+        debug {
             minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
-        }*/
+        }
         release {
-            minifyEnabled false
+            minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
     buildFeatures{
         dataBinding = true
     }
-    dynamicFeatures = [":pills_hub", ":lab_hub", ":prescriptions_hub", ":wellnessTips_hub", ":login_module"]
+    dynamicFeatures = [":pills_hub", ":lab_hub", ":prescriptions_hub", ":wellnessTips_hub", ":login_module", ':home_hq']
 }
 
 dependencies {

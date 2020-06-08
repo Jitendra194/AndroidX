@@ -88,3 +88,4 @@ lint/tmp/
 .idea/runConfigurations.xml
 *.jks
 .idea/jarRepositories.xml
+.idea/render.experimental.xml

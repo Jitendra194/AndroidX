@@ -14,12 +14,10 @@ class NavigationAdapter(private val listener: NavigationAdapterListener) : ListA
 
     interface NavigationAdapterListener {
         fun onNavItemClicked(item: NavigationModelItem.NavMenuItem)
-        fun onNavSignOutItemClicked(item: NavigationModelItem.NavSignOutItem)
     }
 
     override fun getItemViewType(position: Int): Int = when(getItem(position)) {
         is NavigationModelItem.NavMenuItem -> VIEW_TYPE_NAV_MENU_ITEM
-        is NavigationModelItem.NavSignOutItem -> VIEW_TYPE_NAV_SIGN_OUT_ITEM
         is NavigationModelItem.NavDivider -> VIEW_TYPE_NAV_DIVIDER
         else -> throw RuntimeException("Unsupported ItemViewType for obj ${getItem(position)}")
     }
@@ -29,8 +27,6 @@ class NavigationAdapter(private val listener: NavigationAdapterListener) : ListA
         return when(viewType) {
             VIEW_TYPE_NAV_MENU_ITEM ->
                 NavigationViewHolder.NavMenuItemViewHolder(DataBindingUtil.inflate(LayoutInflater.from(parent.context), R.layout.bottom_nav_menu_item, parent, false), listener)
-            VIEW_TYPE_NAV_SIGN_OUT_ITEM ->
-                NavigationViewHolder.NavSignOutItemVieWHolder(DataBindingUtil.inflate(LayoutInflater.from(parent.context), R.layout.bottom_nav_sign_out_item, parent, false), listener)
             VIEW_TYPE_NAV_DIVIDER ->
                 NavigationViewHolder.NavDividerViewHolder(DataBindingUtil.inflate(LayoutInflater.from(parent.context), R.layout.bottom_nav_divider_item, parent, false))
             else -> throw RuntimeException("Unsupported view holder type")

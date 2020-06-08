@@ -1,2 +1,2 @@
-include ':app', ':pills_hub', ':lab_hub', ':prescriptions_hub', ':wellnessTips_hub', ':login_module'
+include ':app', ':pills_hub', ':lab_hub', ':prescriptions_hub', ':wellnessTips_hub', ':login_module', ':home_hq'
 rootProject.name = 'MyDemoApplication'

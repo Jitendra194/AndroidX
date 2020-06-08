@@ -1,8 +1,8 @@
-package com.pills.mydemoapplication.di.viewmodel_providers
+package com.pills.home_hq.di.modules
 
 import androidx.lifecycle.ViewModel
+import com.pills.home_hq.views.HomeViewModel
 import com.pills.mydemoapplication.di.viewmodel_factory.ViewModelKey
-import com.pills.mydemoapplication.views.hq.home.HomeViewModel
 import dagger.Binds
 import dagger.Module
 import dagger.multibindings.IntoMap

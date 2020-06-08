@@ -8,6 +8,7 @@ import com.pills.mydemoapplication.views.hq.nav_drawer_adapter.NavigationModelIt
 import com.pills.mydemoapplication.views.hq.nav_drawer_adapter.NavigationModelItem.Companion.HELP
 import com.pills.mydemoapplication.views.hq.nav_drawer_adapter.NavigationModelItem.Companion.HOME
 import com.pills.mydemoapplication.views.hq.nav_drawer_adapter.NavigationModelItem.Companion.PAYMENT_METHOD
+import com.pills.mydemoapplication.views.hq.nav_drawer_adapter.NavigationModelItem.Companion.SIGN_OUT
 
 object NavigationModel {
     private val _navigationList: MutableLiveData<List<NavigationModelItem>> = MutableLiveData()
@@ -44,14 +45,12 @@ object NavigationModel {
             icon = R.drawable.ic_help,
             titleRes = R.string.help,
             checked = false
-        )
-    )
-
-    private var signOutItem = mutableListOf(
-        NavigationModelItem.NavSignOutItem(
-            id = 0,
+        ),
+        NavigationModelItem.NavMenuItem(
+            id = SIGN_OUT,
             icon = R.drawable.ic_sign_out,
-            titleRes = R.string.sign_out
+            titleRes = R.string.sign_out,
+            checked = false
         )
     )
 
@@ -60,6 +59,7 @@ object NavigationModel {
     }
 
     fun setNavigationMenuItemChecked(id: Int, isChecked: Boolean): Boolean {
+        if (id == SIGN_OUT) return true
         if (!isChecked) {
             mainNavMenuItems.forEachIndexed { index, navMenuItem ->
                 mainNavMenuItems[index] = navMenuItem.copy(checked = id == navMenuItem.id)
@@ -74,5 +74,5 @@ object NavigationModel {
             (NavigationModelItem.NavDivider("Help and feedback")) +
             mainNavMenuItems.subList(3, 5) +
             (NavigationModelItem.NavDivider(null)) +
-            signOutItem).also { _navigationList.value = it }
+            mainNavMenuItems.last()).also { _navigationList.value = it }
 }
