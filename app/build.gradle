@@ -12,8 +12,8 @@ android {
         applicationId "com.pills.mydemoapplication"
         minSdkVersion androidDependencies.min_sdk_version
         targetSdkVersion androidDependencies.target_sdk_version
-        versionCode 7
-        versionName "5.0.2"
+        versionCode 8
+        versionName "5.0.3"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
     kotlinOptions {
