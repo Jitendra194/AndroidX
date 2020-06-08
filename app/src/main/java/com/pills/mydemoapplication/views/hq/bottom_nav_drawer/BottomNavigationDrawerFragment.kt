@@ -23,6 +23,7 @@ import com.pills.mydemoapplication.views.hq.nav_drawer_adapter.NavigationModelIt
 import com.pills.mydemoapplication.views.hq.nav_drawer_adapter.NavigationModelItem.Companion.HELP
 import com.pills.mydemoapplication.views.hq.nav_drawer_adapter.NavigationModelItem.Companion.HOME
 import com.pills.mydemoapplication.views.hq.nav_drawer_adapter.NavigationModelItem.Companion.PAYMENT_METHOD
+import com.pills.mydemoapplication.views.hq.nav_drawer_adapter.NavigationModelItem.Companion.SIGN_OUT
 import kotlinx.android.synthetic.main.bottom_navigation_drawer.*
 
 class BottomNavigationDrawerFragment : Fragment(), NavigationAdapter.NavigationAdapterListener {
@@ -63,13 +64,7 @@ class BottomNavigationDrawerFragment : Fragment(), NavigationAdapter.NavigationA
     }
 
     override fun onNavItemClicked(item: NavigationModelItem.NavMenuItem) {
-        if (NavigationModel.setNavigationMenuItemChecked(item.id, item.checked)) {
-            launchMenuDestination(item.id)
-            closeDrawer()
-        }
-    }
-
-    override fun onNavSignOutItemClicked(item: NavigationModelItem.NavSignOutItem) {
+        if (NavigationModel.setNavigationMenuItemChecked(item.id, item.checked)) launchMenuDestination(item.id)
         closeDrawer()
     }
 
@@ -107,7 +102,7 @@ class BottomNavigationDrawerFragment : Fragment(), NavigationAdapter.NavigationA
     private fun setupNavigationRecyclerView() = NavigationModel.apply {
         nav_recycler_view.adapter = navAdapter
         navigationList.observe(viewLifecycleOwner, Observer { navAdapter.submitList(it) })
-        setNavigationMenuItemChecked(0, false)
+        setNavigationMenuItemChecked(HOME, false)
     }
 
     private fun launchMenuDestination(destinationId: Int) = when(destinationId) {
@@ -116,6 +111,7 @@ class BottomNavigationDrawerFragment : Fragment(), NavigationAdapter.NavigationA
         PAYMENT_METHOD -> Log.i("DESTINATION", destinationId.toString())
         FEEDBACK -> Log.i("DESTINATION", destinationId.toString())
         HELP -> Log.i("DESTINATION", destinationId.toString())
+        SIGN_OUT -> Log.i("DESTINATION", destinationId.toString())
         else -> Log.i("DESTINATION", "Unsupported destination")
     }
 }

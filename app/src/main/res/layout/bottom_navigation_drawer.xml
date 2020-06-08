@@ -19,7 +19,7 @@
             style="@style/Widget.MaterialComponents.BottomSheet.Modal"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:backgroundTint="?colorPrimarySurface"
+            android:backgroundTint="?colorSurface"
             app:behavior_halfExpandedRatio="0.6"
             app:behavior_hideable="true"
             app:behavior_skipCollapsed="true"

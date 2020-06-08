@@ -8,9 +8,9 @@
 
     <fragment
         android:id="@+id/homeFragment"
-        android:name="com.pills.mydemoapplication.views.hq.home.HomeFragment"
-        android:label="home_fragment"
-        tools:layout="@layout/home_fragment" >
+        android:name="com.pills.home_hq.views.HomeFragment"
+        android:label="HomeFragment"
+        app:moduleName="home_hq">
         <action
             android:id="@+id/action_homeFragment_to_pillsFragment"
             app:destination="@id/pillsFragment"
@@ -30,27 +30,31 @@
     </fragment>
 
     <fragment
-        app:moduleName="pills_hub"
         android:id="@+id/pillsFragment"
         android:name="com.pills.pills_hub.views.PillsFragment"
-        android:label="PillsFragment" />
+        android:label="PillsFragment"
+        app:moduleName="pills_hub"
+        tools:layout="@layout/pills_fragment" />
 
     <fragment
-        app:moduleName="lab_hub"
         android:id="@+id/labReportsFragment"
         android:name="com.pills.lab_hub.views.LabReportsFragment"
-        android:label="LabReportsFragment" />
+        android:label="LabReportsFragment"
+        app:moduleName="lab_hub"
+        tools:layout="@layout/lab_reports_fragment"/>
 
     <fragment
-        app:moduleName="prescriptions_hub"
         android:id="@+id/prescriptionsFragment"
         android:name="com.pills.prescriptions_hub.views.PrescriptionsFragment"
-        android:label="PrescriptionsFragment" />
+        android:label="PrescriptionsFragment"
+        app:moduleName="prescriptions_hub"
+        tools:layout="@layout/prescriptions_fragment"/>
 
     <fragment
-        app:moduleName="wellnessTips_hub"
         android:id="@+id/wellnessTipsFragment"
         android:name="com.pills.wellnesstips_hub.views.WellnessTipsFragment"
-        android:label="WellnessTipsFragment" />
+        android:label="WellnessTipsFragment"
+        app:moduleName="wellnessTips_hub"
+        tools:layout="@layout/wellness_tips_fragment"/>
 
 </navigation>

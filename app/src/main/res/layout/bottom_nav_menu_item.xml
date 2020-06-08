@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+        <import type="android.view.View"/>
         <variable
             name="item"
             type="com.pills.mydemoapplication.views.hq.nav_drawer_adapter.NavigationModelItem.NavMenuItem" />
@@ -13,23 +14,54 @@
             type="com.pills.mydemoapplication.views.hq.nav_drawer_adapter.NavigationAdapter.NavigationAdapterListener" />
     </data>
 
-    <CheckedTextView
-        android:id="@+id/checkedTextView"
+    <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="56dp"
         android:background="?attr/selectableItemBackground"
-        android:checked="@{item.checked}"
-        android:drawablePadding="32dp"
-        android:ellipsize="end"
-        android:gravity="center_vertical|start"
-        android:lines="1"
-        android:onClick="@{() -> itemClick.onNavItemClicked(item)}"
-        android:paddingStart="32dp"
-        android:paddingEnd="32dp"
-        android:text="@{item.titleRes}"
-        android:textAppearance="?attr/textAppearanceBody2"
-        android:textColor="@color/color_navigation_drawer_menu_item"
-        app:drawableStart="@{item.icon}"
-        app:drawableTint="@color/color_navigation_drawer_menu_item"
-        tools:text="HOME" />
+        android:onClick="@{() -> itemClick.onNavItemClicked(item)}">
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="30dp"
+            android:layout_marginBottom="10dp"
+            android:visibility="@{item.checked ? View.VISIBLE : View.GONE}"
+            app:cardBackgroundColor="@{item.checked ? @color/green_200 : @android:color/transparent}"
+            android:alpha="0.1" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="30dp"
+            android:layout_marginBottom="10dp"
+            android:orientation="horizontal">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/navigation_item_image"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginHorizontal="10dp"
+                app:item_check_state="@{item.checked}"
+                app:set_image="@{item.icon}"
+                tools:src="@drawable/ic_home" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/navigation_item_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginHorizontal="10dp"
+                android:text="@{item.titleRes}"
+                android:textAppearance="?textAppearanceListItem"
+                app:text_item_check_state="@{item.checked}"
+                tools:text="Home" />
+
+        </LinearLayout>
+
+    </FrameLayout>
 </layout>

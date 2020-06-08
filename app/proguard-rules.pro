@@ -20,9 +20,5 @@
 # hide the original source file name.
 #-renamesourcefileattribute SourceFile
 
--keep public class com.pills.mydemoapplication.DataBinderMapperImpl { *; }
--keep public class com.pills.login_module.DataBinderMapperImpl { *; }
--keep public class com.pills.lab_hub.DataBinderMapperImpl { *; }
--keep public class com.pills.pills_hub.DataBinderMapperImpl { *; }
--keep public class com.pills.prescriptions_hub.DataBinderMapperImpl { *; }
--keep public class com.pills.wellnesstips_hub.DataBinderMapperImpl { *; }
+-keep class * extends androidx.databinding.DataBinderMapper { *; }
+-keep class com.pills.mydemoapplication.views.hq.bottom_nav_drawer.BottomNavigationDrawerFragment { *; }

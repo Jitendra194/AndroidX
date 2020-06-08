@@ -11,16 +11,15 @@ sealed class NavigationModelItem {
         const val PAYMENT_METHOD: Int = 2
         const val FEEDBACK: Int = 3
         const val HELP: Int = 4
+        const val SIGN_OUT: Int = 5
     }
     data class NavMenuItem(val id: Int, @DrawableRes val icon: Int, @StringRes val titleRes: Int, val checked: Boolean) : NavigationModelItem()
-    data class NavSignOutItem(val id: Int, @DrawableRes val icon: Int, @StringRes val titleRes: Int) : NavigationModelItem()
     data class NavDivider(val title: String?) : NavigationModelItem()
 
     object NavigationModelItemDiff : DiffUtil.ItemCallback<NavigationModelItem>() {
         override fun areItemsTheSame(oldItem: NavigationModelItem, newItem: NavigationModelItem): Boolean {
             return when {
                 oldItem is NavMenuItem && newItem is NavMenuItem -> oldItem.id == newItem.id
-                oldItem is NavSignOutItem && newItem is NavSignOutItem -> oldItem.id == newItem.id
                 else -> oldItem == newItem
             }
         }
@@ -29,8 +28,6 @@ sealed class NavigationModelItem {
             return when {
                 oldItem is NavMenuItem && newItem is NavMenuItem ->
                     oldItem.icon == newItem.icon && oldItem.titleRes == newItem.titleRes && oldItem.checked == newItem.checked
-                oldItem is NavSignOutItem && newItem is NavSignOutItem ->
-                    oldItem.icon == newItem.icon && oldItem.titleRes == newItem.titleRes
                 else -> false
             }
         }

@@ -1,11 +1,16 @@
 <resources>
-    <style name="ShapeAppearanceOverlay.MyApp.Button" parent="">
+    <style name="ShapeAppearanceOverlay.Pills.Button" parent="">
         <item name="cornerFamily">cut</item>
         <item name="cornerSize">0dp</item>
     </style>
 
     <style name="brandButton" parent="Widget.MaterialComponents.Button">
         <item name="android:textAppearance">@style/TextAppearance.myApp.button</item>
-        <item name="shapeAppearanceOverlay">@style/ShapeAppearanceOverlay.MyApp.Button</item>
+        <item name="shapeAppearanceOverlay">@style/ShapeAppearanceOverlay.Pills.Button</item>
+    </style>
+    
+    <style name="ShapeAppearanceOverlay.Pills.CirclularImage" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">50%</item>
     </style>
 </resources>

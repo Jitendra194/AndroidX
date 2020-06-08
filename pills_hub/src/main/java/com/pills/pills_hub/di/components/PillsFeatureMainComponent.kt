@@ -17,9 +17,6 @@ interface PillsFeatureMainComponent : AndroidInjector<PillsFeatureImpl> {
 
     @Component.Factory
     interface Factory {
-        fun create(
-            @BindsInstance pillsFeatureImpl: PillsFeatureImpl,
-            pillsFeature: PillsFeature.Dependencies
-        ): PillsFeatureMainComponent
+        fun create(@BindsInstance pillsFeatureImpl: PillsFeatureImpl, pillsFeature: PillsFeature.Dependencies): PillsFeatureMainComponent
     }
 }

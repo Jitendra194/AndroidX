@@ -28,6 +28,7 @@ interface BaseApplicationComponent : AndroidInjector<BaseApplicationClass> {
     val prescriptionsFeature: PrescriptionsFeature.Dependencies
     val wellnessTipsFeature: WellnessTipsFeature.Dependencies
     val loginFeature: LoginFeature.Dependencies
+    val homeFeature: HomeFeature.Dependencies
 
     @Component.Factory
     interface Factory {

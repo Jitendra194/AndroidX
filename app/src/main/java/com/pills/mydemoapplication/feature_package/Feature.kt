@@ -8,7 +8,8 @@ enum class FeatureName(val moduleName: String) {
     LabReportsFeature("lab_hub"),
     PrescriptionsFeature("prescriptions_hub"),
     WellnessTipsFeature("wellnessTips_hub"),
-    LoginFeature("login_module")
+    LoginFeature("login_module"),
+    HomeFeature("home_hq")
 }
 
 interface Feature<T> {
@@ -36,6 +37,13 @@ interface PrescriptionsFeature : Feature<PrescriptionsFeature.Dependencies> {
 interface WellnessTipsFeature : Feature<WellnessTipsFeature.Dependencies> {
     interface Dependencies {
         val application: BaseApplicationClass
+    }
+}
+
+interface HomeFeature : Feature<HomeFeature.Dependencies> {
+    interface Dependencies {
+        val application: BaseApplicationClass
+        val featureManager: FeatureManager
     }
 }
 

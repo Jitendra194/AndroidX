@@ -48,6 +48,17 @@ object FeaturesModule {
 
     @Provides
     @Singleton
+    fun providesHomeFeatureDependencies(application: BaseApplicationClass, featureManager: FeatureManager): HomeFeature.Dependencies {
+        return object : HomeFeature.Dependencies {
+            override val application: BaseApplicationClass
+                get() = application
+            override val featureManager: FeatureManager
+                get() = featureManager
+        }
+    }
+
+    @Provides
+    @Singleton
     fun providesLoginFeatureDependencies(application: BaseApplicationClass, featureManager: FeatureManager, googleSignInClient: GoogleSignInClient): LoginFeature.Dependencies {
         return object : LoginFeature.Dependencies {
             override val application: BaseApplicationClass

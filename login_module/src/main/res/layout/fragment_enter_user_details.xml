@@ -16,7 +16,7 @@
         android:layout_height="match_parent"
         android:padding="16dp">
 
-        <TextView
+        <com.google.android.material.textview.MaterialTextView
             android:id="@+id/title_text"
             style="@style/TextAppearance.MyTheme.Headline5"
             android:layout_width="wrap_content"
@@ -28,7 +28,7 @@
             app:layout_constraintTop_toTopOf="parent"
             tools:text="Welcome, User!" />
 
-        <TextView
+        <com.google.android.material.textview.MaterialTextView
             android:id="@+id/subtitle_text"
             style="@style/TextAppearance.MyTheme.Subtitle1"
             android:layout_width="wrap_content"

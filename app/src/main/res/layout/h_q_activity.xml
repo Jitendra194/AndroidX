@@ -19,7 +19,7 @@
             app:navGraph="@navigation/hq_nav_graph"
             tools:ignore="FragmentTagUsage" />
 
-        <fragment
+        <androidx.fragment.app.FragmentContainerView
             android:id="@+id/bottom_nav_drawer"
             android:name="com.pills.mydemoapplication.views.hq.bottom_nav_drawer.BottomNavigationDrawerFragment"
             android:layout_width="match_parent"
@@ -52,7 +52,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
                     app:srcCompat="@drawable/ic_arrow_drop_up"
-                    app:tint="?attr/colorOnPrimarySurface" />
+                    app:tint="?colorOnPrimarySurface" />
 
                 <TextView
                     android:id="@+id/bottom_app_bar_title"
@@ -60,8 +60,8 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
                     android:layout_marginHorizontal="8dp"
-                    android:text="HOME"
-                    android:textAppearance="?attr/textAppearanceBody1"
+                    android:text="Home"
+                    android:textAppearance="?textAppearanceBody1"
                     android:textColor="?attr/colorControlNormal" />
             </LinearLayout>
 
@@ -71,7 +71,10 @@
             android:id="@+id/fab"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_anchor="@id/bar" />
+            app:layout_anchor="@id/bar"
+            android:layout_margin="16dp"
+            app:tint="@color/white_50"
+            app:srcCompat="@drawable/ic_cart" />
 
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 

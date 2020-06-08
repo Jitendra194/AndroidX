@@ -33,8 +33,7 @@
             android:paddingBottom="9dp"
             android:text="@{divider.title}"
             tools:text="Subtitle"
-            android:textAllCaps="true"
-            android:textColor="?colorOnPrimary"
+            android:textColor="?colorOnSurface"
             android:textAppearance="?textAppearanceSubtitle1" />
     </LinearLayout>
 </layout>

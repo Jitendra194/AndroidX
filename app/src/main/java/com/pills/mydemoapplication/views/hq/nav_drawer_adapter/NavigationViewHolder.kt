@@ -4,7 +4,6 @@ import android.view.View
 import androidx.recyclerview.widget.RecyclerView
 import com.pills.mydemoapplication.databinding.BottomNavDividerItemBinding
 import com.pills.mydemoapplication.databinding.BottomNavMenuItemBinding
-import com.pills.mydemoapplication.databinding.BottomNavSignOutItemBinding
 
 sealed class NavigationViewHolder<T: NavigationModelItem>(view: View) : RecyclerView.ViewHolder(view) {
     abstract fun bind(navItem : T)
@@ -15,17 +14,6 @@ sealed class NavigationViewHolder<T: NavigationModelItem>(view: View) : Recycler
             binding.run {
                 item = navItem
                 itemClick = listener
-                executePendingBindings()
-            }
-        }
-    }
-
-    class NavSignOutItemVieWHolder(private val binding: BottomNavSignOutItemBinding,
-                                   private val clickListener: NavigationAdapter.NavigationAdapterListener) : NavigationViewHolder<NavigationModelItem.NavSignOutItem>(binding.root) {
-        override fun bind(navItem: NavigationModelItem.NavSignOutItem) {
-            binding.run {
-                item = navItem
-                listener = clickListener
                 executePendingBindings()
             }
         }

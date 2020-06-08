@@ -5,10 +5,13 @@ import com.pills.mydemoapplication.feature_package.FeatureName.PillsFeature
 import com.pills.mydemoapplication.feature_package.FeatureName.LabReportsFeature
 import com.pills.mydemoapplication.feature_package.FeatureName.PrescriptionsFeature
 import com.pills.mydemoapplication.feature_package.FeatureName.WellnessTipsFeature
+import com.pills.mydemoapplication.feature_package.FeatureName.HomeFeature
 import com.pills.mydemoapplication.feature_package.*
 import javax.inject.Inject
 
 class HQViewModel @Inject constructor(private val featureManager: FeatureManager) : ViewModel() {
+
+    fun launchHome() = featureManager getFeature HomeFeature
 
     fun launchPillsHub() = featureManager getFeature PillsFeature
 

@@ -35,6 +35,7 @@ private fun FeatureManager.selectFeature(featureName: FeatureName) = when (featu
     PrescriptionsFeature -> injectFeature<PrescriptionsFeature, PrescriptionsFeature.Dependencies>(appComponent.prescriptionsFeature, featureName)
     WellnessTipsFeature -> injectFeature<WellnessTipsFeature, WellnessTipsFeature.Dependencies>(appComponent.wellnessTipsFeature, featureName)
     LoginFeature -> injectFeature<LoginFeature, LoginFeature.Dependencies>(appComponent.loginFeature, featureName)
+    HomeFeature -> injectFeature<HomeFeature, HomeFeature.Dependencies>(appComponent.homeFeature, featureName)
 }
 
 fun FeatureManager.installFeature(featureName: FeatureName) = downloadFeature(featureName)

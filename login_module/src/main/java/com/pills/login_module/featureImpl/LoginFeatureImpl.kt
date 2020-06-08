@@ -1,7 +1,5 @@
 package com.pills.login_module.featureImpl
 
-import android.content.Context
-import android.content.Intent
 import com.google.auto.service.AutoService
 import com.pills.login_module.di.components.DaggerLoginFeatureMainComponent
 import com.pills.login_module.di.components.LoginFeatureMainComponent
