@@ -17,7 +17,7 @@
         android:layout_width="match_parent"
         android:layout_height="100dp"
         android:layout_margin="10dp"
-        app:cardElevation="3dp"
+        app:cardElevation="4dp"
         android:id="@+id/card"
         android:onClick="@{(view) -> clickListener.onClickFeature(view, item)}"
         android:orientation="horizontal">

@@ -13,7 +13,8 @@ def versions = [
         appcompat       : '1.1.0',
         support_v4      : '1.0.0',
         android_core    : '1.2.0',
-        google_sso      : '18.0.0'
+        google_sso      : '18.0.0',
+        retrofit        : '2.9.0'
 ]
 
 ext.deps = [:]
@@ -22,6 +23,11 @@ ext.androidDependencies = [
         compile_sdk_version: 29,
         target_sdk_version : 29,
         min_sdk_version    : 21
+]
+
+deps.retrofit = [
+        retrofit : "com.squareup.retrofit2:retrofit:$versions.retrofit",
+        converter: "com.squareup.retrofit2:converter-gson:$versions.retrofit"
 ]
 
 deps.play = [

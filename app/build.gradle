@@ -21,7 +21,7 @@ android {
     }
     buildTypes {
         debug {
-            minifyEnabled true
+            minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
         release {
@@ -74,6 +74,10 @@ dependencies {
 
     //Google Sign in
     api deps.google.sso
+
+    //retrofit
+    api deps.retrofit.retrofit
+    api deps.retrofit.converter
 
     //unit test
     testImplementation deps.test.junit
