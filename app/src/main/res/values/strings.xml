@@ -2,7 +2,7 @@
     <string name="app_name">Application</string>
 
     <string name="login_screen_title">Login</string>
-    <string name="login_screen_username_hint">Email/Username</string>
+    <string name="login_screen_username_hint">Phone number</string>
     <string name="login_screen_password_hint">Password</string>
 
     <string name="create_account">CreateAccountFeature</string>

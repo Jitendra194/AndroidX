@@ -41,7 +41,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/login_screen_username_hint"
-                android:inputType="textEmailAddress" />
+                android:text="@={viewModel.username}"
+                android:inputType="phone" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -63,6 +64,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/login_screen_password_hint"
+                android:text="@={viewModel.password}"
                 android:inputType="textPassword" />
 
         </com.google.android.material.textfield.TextInputLayout>
@@ -74,6 +76,7 @@
             android:layout_height="70dp"
             android:layout_marginTop="20dp"
             android:text="@string/login"
+            android:onClick="@{() -> viewModel.loginGetUserData()}"
             app:layout_constraintEnd_toEndOf="@id/text_input_layout_outlined_password"
             app:layout_constraintStart_toStartOf="@id/text_input_layout_outlined_password"
             app:layout_constraintTop_toBottomOf="@id/text_input_layout_outlined_password" />

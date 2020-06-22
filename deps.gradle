@@ -14,7 +14,8 @@ def versions = [
         support_v4      : '1.0.0',
         android_core    : '1.2.0',
         google_sso      : '18.0.0',
-        retrofit        : '2.9.0'
+        retrofit        : '2.9.0',
+        room            : '2.2.5'
 ]
 
 ext.deps = [:]
@@ -23,6 +24,12 @@ ext.androidDependencies = [
         compile_sdk_version: 29,
         target_sdk_version : 29,
         min_sdk_version    : 21
+]
+
+deps.room = [
+        room_runtime   : "androidx.room:room-runtime:$versions.room",
+        room_compiler  : "androidx.room:room-compiler:$versions.room",
+        room_coroutines: "androidx.room:room-ktx:$versions.room"
 ]
 
 deps.retrofit = [

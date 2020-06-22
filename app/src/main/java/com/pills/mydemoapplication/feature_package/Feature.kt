@@ -2,6 +2,7 @@ package com.pills.mydemoapplication.feature_package
 
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.pills.mydemoapplication.base_application.BaseApplicationClass
+import retrofit2.Retrofit
 
 enum class FeatureName(val moduleName: String) {
     PillsFeature("pills_hub"),
@@ -52,5 +53,6 @@ interface LoginFeature : Feature<LoginFeature.Dependencies> {
         val application: BaseApplicationClass
         val featureManager: FeatureManager
         val googleSignInClient: GoogleSignInClient
+        val retrofit: Retrofit.Builder
     }
 }

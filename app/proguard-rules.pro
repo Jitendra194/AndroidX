@@ -22,3 +22,5 @@
 
 -keep class * extends androidx.databinding.DataBinderMapper { *; }
 -keep class com.pills.mydemoapplication.views.hq.bottom_nav_drawer.BottomNavigationDrawerFragment { *; }
+
+-keepattributes Signature, InnerClasses, EnclosingMethod
