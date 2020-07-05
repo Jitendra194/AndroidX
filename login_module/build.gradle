@@ -3,7 +3,7 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
 apply plugin: 'androidx.navigation.safeargs.kotlin'
-apply from: '../deps.gradle'
+apply from: '../dependencies.gradle'
 
 android {
     compileSdkVersion androidDependencies.compile_sdk_version
@@ -13,6 +13,11 @@ android {
         targetSdkVersion androidDependencies.target_sdk_version
         versionCode 7
         versionName "5.0.2"
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
     }
 
     kotlinOptions {
@@ -27,11 +32,14 @@ android {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation project(':app')
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    implementation 'androidx.lifecycle:lifecycle-extensions:2.2.0'
+    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.2.0'
 
     //Dagger
-    kapt deps.dagger.compiler
-    kapt deps.dagger.android_compiler
+    kapt dagger.compiler
+    kapt dagger.android_compiler
 
     //auto service
-    kapt deps.autoservice.autoservice
+    kapt autoservice.autoservice
 }

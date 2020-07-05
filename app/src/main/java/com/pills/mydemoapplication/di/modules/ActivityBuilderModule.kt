@@ -14,6 +14,6 @@ abstract class ActivityBuilderModule {
     @ContributesAndroidInjector(modules = [LaunchViewModelProviderModule::class])
     abstract fun contributesLaunchActivity(): LaunchActivity
 
-    @ContributesAndroidInjector(modules = [HQViewModelProviderModule::class])
+    @ContributesAndroidInjector(modules = [HQViewModelProviderModule::class, FragmentBuilderModule::class])
     abstract fun contributesHQActivity(): HQActivity
 }

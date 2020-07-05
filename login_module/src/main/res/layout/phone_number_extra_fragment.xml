@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.pills.login_module.views.number_extra.PhoneNumberExtraViewModel" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="16dp">
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/title_text"
+            style="@style/TextAppearance.MyTheme.Headline5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="@{@string/welcome_user(viewModel.firstName)}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Welcome, User!" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/subtitle_text"
+            style="@style/TextAppearance.MyTheme.Subtitle1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="@string/user_details_subtitle"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/title_text"
+            tools:text="We need a few more details to finish your profile" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/phone_number_dob"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="8dp"
+            app:layout_constraintEnd_toStartOf="@id/create_Account_vertical_guideline"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/subtitle_text">
+
+            <!--suppress AndroidUnknownAttribute -->
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/phone_number_dob_field"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:focusable="false"
+                android:hint="@string/date_of_birth_form"
+                android:focusableInTouchMode="true"
+                android:imeOptions="actionNext"
+                android:inputType="date"
+                android:text="@{viewModel.dobField}" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/phone_number_gender"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="20dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/create_Account_vertical_guideline"
+            app:layout_constraintTop_toBottomOf="@id/subtitle_text">
+
+            <!--suppress AndroidUnknownAttribute -->
+            <AutoCompleteTextView
+                android:id="@+id/phone_number_gender_field"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/gender_form"
+                android:focusable="false"
+                android:focusableInTouchMode="true"
+                android:imeOptions="actionNext"
+                android:onTextChanged="@{(s, start, before, count) -> viewModel.onGenderTextChanged(s)}"
+                android:inputType="text" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <Button
+            android:id="@+id/phone_number_submit_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="@string/submit_form"
+            android:enabled="@{viewModel.submit}"
+            android:onClick="@{() -> viewModel.submit()}"
+            app:layout_constraintEnd_toEndOf="@id/phone_number_gender"
+            app:layout_constraintStart_toStartOf="@id/phone_number_dob"
+            app:layout_constraintTop_toBottomOf="@id/phone_number_dob" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/create_Account_vertical_guideline"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.5" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

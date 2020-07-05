@@ -3,7 +3,7 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
 apply plugin: 'androidx.navigation.safeargs.kotlin'
-apply from: '../deps.gradle'
+apply from: '../dependencies.gradle'
 
 android {
     compileSdkVersion androidDependencies.compile_sdk_version
@@ -12,16 +12,20 @@ android {
         applicationId "com.pills.mydemoapplication"
         minSdkVersion androidDependencies.min_sdk_version
         targetSdkVersion androidDependencies.target_sdk_version
-        versionCode 8
-        versionName "5.0.3"
+        versionCode 9
+        versionName "1.0.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
     }
     kotlinOptions {
         jvmTarget = "1.8"
     }
     buildTypes {
         debug {
-            minifyEnabled true
+            minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
         release {
@@ -39,46 +43,57 @@ dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
     //android core
-    api deps.core.ktx
-    api deps.kotlin.stdlib
+    api core.ktx
+    api kotlin.stdlib
 
     //appcompat
-    api deps.appcompat.appcompat
-    api deps.appcompat.support_v4
+    api appcompat.appcompat
+    api appcompat.support_v4
 
     //design
-    api deps.material.material
-    api deps.constraintLayout.constraintLayout
+    api material.material
+    api constraintLayout.constraintLayout
 
     //Dagger
-    api deps.dagger.core
-    api deps.dagger.android
-    api deps.dagger.android_support
-    kapt deps.dagger.android_compiler
-    kapt deps.dagger.compiler
+    api dagger.core
+    api dagger.android
+    api dagger.android_support
+    kapt dagger.android_compiler
+    kapt dagger.compiler
 
     //Navigation
-    api deps.navigation.fragment
-    api deps.navigation.ui
-    api deps.navigation.dynamic
+    api navigation.fragment
+    api navigation.ui
+    api navigation.dynamic
 
     // Lifecycles
-    api deps.lifecycle.viewmodel
-    api deps.lifecycle.viewmodelext
+    api lifecycle.viewmodel
+    api lifecycle.viewmodelext
 
     //play services - split compat
-    api deps.play.core
+    api play.core
 
     //auto service
-    api deps.autoservice.annotations
+    api autoservice.annotations
 
     //Google Sign in
-    api deps.google.sso
+    api google.sso
+
+    //retrofit
+    api retrofit.retrofit
+    api retrofit.converter
+    implementation retrofit.http_logging
+
+    //Room Database
+    api room.room_runtime
+    api room.room_coroutines
+    kapt room.room_compiler
 
     //unit test
-    testImplementation deps.test.junit
-    androidTestImplementation deps.test.runner
+    testImplementation unit_test.junit
+    androidTestImplementation unit_test.runner
 
     //espresso
-    androidTestImplementation deps.espresso.core
+    androidTestImplementation espresso.core
 }
+

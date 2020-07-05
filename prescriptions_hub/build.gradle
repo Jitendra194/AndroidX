@@ -2,7 +2,7 @@ apply plugin: 'com.android.dynamic-feature'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-kapt'
 apply plugin: 'kotlin-android-extensions'
-apply from: '../deps.gradle'
+apply from: '../dependencies.gradle'
 
 android {
     compileSdkVersion androidDependencies.compile_sdk_version
@@ -12,6 +12,11 @@ android {
         targetSdkVersion androidDependencies.target_sdk_version
         versionCode 7
         versionName "5.0.2"
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
     }
 
     kotlinOptions {
@@ -28,9 +33,9 @@ dependencies {
     implementation project(':app')
 
     //Dagger
-    kapt deps.dagger.compiler
-    kapt deps.dagger.android_compiler
+    kapt dagger.compiler
+    kapt dagger.android_compiler
 
     //auto service
-    kapt deps.autoservice.autoservice
+    kapt autoservice.autoservice
 }

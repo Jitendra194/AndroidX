@@ -14,7 +14,7 @@ object CreateAccountValidationErrorUtil {
 }
 
 
-@BindingAdapter(value = ["dob", "gender", "phoneNumber", "formLength"], requireAll = true)
+@BindingAdapter(value = ["dob", "gender", "phoneNumber", "formLength"], requireAll = false)
 fun setSubmitButtonEnabledState(view: View, dob: Boolean, gender: Boolean, phoneNumber: Boolean, formLength: Boolean) {
     view.isEnabled = !dob && !gender && !phoneNumber && formLength
 }

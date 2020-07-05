@@ -32,10 +32,18 @@
         android:id="@+id/createAccountMethodFragment"
         android:name="com.pills.login_module.views.create_account.CreateAccountMethodFragment"
         android:label="CreateAccountMethodFragment"
-        tools:layout="@layout/fragment_create_account_method" >
+        tools:layout="@layout/fragment_create_account_method">
         <action
             android:id="@+id/action_createAccountMethodFragment_to_enterUserDetailsFragment"
             app:destination="@id/enterUserDetailsFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:launchSingleTop="true"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
+        <action
+            android:id="@+id/action_createAccountMethodFragment_to_phoneNumberExtraFragment"
+            app:destination="@id/phoneNumberExtraFragment"
             app:enterAnim="@anim/nav_default_enter_anim"
             app:exitAnim="@anim/nav_default_exit_anim"
             app:launchSingleTop="true"
@@ -50,6 +58,23 @@
         <argument
             android:name="GivenName"
             app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/phoneNumberExtraFragment"
+        android:name="com.pills.login_module.views.number_extra.PhoneNumberExtraFragment"
+        android:label="PhoneNumberExtraFragment"
+        tools:layout="@layout/phone_number_extra_fragment">
+        <argument
+            android:name="userDataRequestBody"
+            app:argType="com.pills.login_module.repository.models.UserDataRequest" />
+        <action
+            android:id="@+id/action_phoneNumberExtraFragment_to_loginFragment"
+            app:destination="@id/loginFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim"
+            app:popUpTo="@id/loginFragment" />
     </fragment>
 
 </navigation>

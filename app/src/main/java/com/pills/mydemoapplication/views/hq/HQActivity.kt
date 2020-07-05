@@ -15,6 +15,7 @@ import com.pills.mydemoapplication.databinding.HQActivityBinding
 import com.pills.mydemoapplication.di.viewmodel_factory.ViewModelProviderFactory
 import com.pills.mydemoapplication.utils.animation_utils.HalfClockwiseRotateSlideAction
 import com.pills.mydemoapplication.utils.animation_utils.ShowHideFabStateAction
+import com.pills.mydemoapplication.utils.extention_utils.debug
 import com.pills.mydemoapplication.views.hq.bottom_nav_drawer.BottomNavigationDrawerFragment
 import dagger.android.support.DaggerAppCompatActivity
 import kotlinx.android.synthetic.main.h_q_activity.*

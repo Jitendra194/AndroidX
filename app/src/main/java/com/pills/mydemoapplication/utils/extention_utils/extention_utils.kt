@@ -2,6 +2,7 @@ package com.pills.mydemoapplication.utils.extention_utils
 
 import android.content.Context
 import android.graphics.drawable.Drawable
+import android.util.Log
 import android.view.View
 import android.view.ViewGroup
 import androidx.annotation.DrawableRes
@@ -24,4 +25,8 @@ fun Float.normalize(inputMin: Float, inputMax: Float, outputMin: Float, outputMa
         return outputMax
     }
     return outputMin * (1 - (this - inputMin) / (inputMax - inputMin)) + outputMax * ((this - inputMin) / (inputMax - inputMin))
+}
+
+fun String.debug(function: () -> String) {
+    Log.d(this, function())
 }

@@ -10,23 +10,21 @@ import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.Observer
+import androidx.lifecycle.observe
 import androidx.navigation.fragment.findNavController
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.pills.login_module.R
 import com.pills.login_module.databinding.LoginFragmentBinding
 import com.pills.login_module.featureImpl.loginFeatureMainComponent
+import com.pills.login_module.utils.State
+import com.pills.login_module.utils.State.*
 import com.pills.login_module.utils.RC_SIGN_IN
 import com.pills.login_module.utils.handleSignInResult
-import com.pills.login_module.views.create_account.CreateAccountMethodFragmentDirections
-import com.pills.login_module.views.create_account.CreateAccountMethodViewModel
 import com.pills.mydemoapplication.di.viewmodel_factory.ViewModelProviderFactory
 import dagger.android.AndroidInjector
 import dagger.android.DispatchingAndroidInjector
 import dagger.android.HasAndroidInjector
-import kotlinx.android.synthetic.main.fragment_create_account_method.*
 import kotlinx.android.synthetic.main.login_fragment.*
-import kotlinx.android.synthetic.main.login_fragment.sign_in_button
 import javax.inject.Inject
 
 class LoginFragment : Fragment(), HasAndroidInjector {
@@ -48,9 +46,7 @@ class LoginFragment : Fragment(), HasAndroidInjector {
             .inject(this)
     }
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View? = DataBindingUtil.inflate<LoginFragmentBinding>(inflater, R.layout.login_fragment, container, false).run {
         binding = this
         viewModel = loginViewModel
@@ -60,7 +56,24 @@ class LoginFragment : Fragment(), HasAndroidInjector {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        observeViewModel()
         setupButtonLaunchEvents()
+    }
+
+    private fun observeViewModel() = loginViewModel.apply {
+        launch.observe(viewLifecycleOwner) { it?.let { setupLoginState(it) } }
+    }
+
+    private fun setupLoginState(state: State) = when(state) {
+        SUCCESS -> loginSuccess()
+        FAILURE -> loginFailure()
+    }
+
+    private fun loginFailure() = Toast.makeText(context, "Failed to login!", Toast.LENGTH_SHORT).show()
+
+    private fun loginSuccess() {
+        startActivity(loginViewModel.launchHQ())
+        activity?.finish()
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
@@ -78,7 +91,6 @@ class LoginFragment : Fragment(), HasAndroidInjector {
         launch_create_account.setOnClickListener {
             findNavController().navigate(LoginFragmentDirections.actionLoginFragmentToCreateAccountMethodFragment())
         }
-        login_button.setOnClickListener { startActivity(loginViewModel.launchHQ()) }
         sign_in_button.setOnClickListener {
             startActivityForResult(loginViewModel.getGoogleSignInIntent(), RC_SIGN_IN)
         }

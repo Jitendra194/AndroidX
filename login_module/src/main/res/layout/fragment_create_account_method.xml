@@ -186,6 +186,7 @@
                 android:imeOptions="actionNext"
                 android:inputType="number"
                 android:maxLength="10"
+                android:importantForAutofill="no"
                 android:maxLines="1"
                 android:onTextChanged="@{(s, start, before, count) -> viewModel.onMobileNumberChanged(s)}"
                 android:text="@={viewModel.mobileNumber}" />
