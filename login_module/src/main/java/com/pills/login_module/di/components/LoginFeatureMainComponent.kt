@@ -17,6 +17,7 @@ interface LoginFeatureMainComponent : AndroidInjector<LoginFeatureImpl> {
     val loginComponent: LoginComponent.Factory
     val createAccountComponent: CreateAccountComponent.Factory
     val googleUserDetailsComponent: GoogleUserDetailsComponent.Factory
+    val phoneExtraUserDetailsComponent: PhoneExtraUserDetailsComponent.Factory
 
     @Component.Factory
     interface Factory {

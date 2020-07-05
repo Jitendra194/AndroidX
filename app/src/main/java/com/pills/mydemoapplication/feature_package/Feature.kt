@@ -1,7 +1,9 @@
 package com.pills.mydemoapplication.feature_package
 
+import android.content.SharedPreferences
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.pills.mydemoapplication.base_application.BaseApplicationClass
+import com.pills.mydemoapplication.repository.local.database.AppDatabase
 import retrofit2.Retrofit
 
 enum class FeatureName(val moduleName: String) {
@@ -54,5 +56,7 @@ interface LoginFeature : Feature<LoginFeature.Dependencies> {
         val featureManager: FeatureManager
         val googleSignInClient: GoogleSignInClient
         val retrofit: Retrofit.Builder
+        val appDatabase: AppDatabase
+        val sharedPreferences: SharedPreferences
     }
 }

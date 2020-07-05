@@ -1,0 +1,100 @@
+ext {
+    play = '1.7.3'
+    kotlin = '1.3.72'
+    lifecycle = '2.2.0'
+    navigation = '2.3.0-beta01'
+    dagger = '2.28'
+    espresso = '3.2.0'
+    junit = '4.13'
+    test_runner = '1.2.0'
+    constraintLayout = '1.1.3'
+    material = '1.2.0-beta01'
+    autoservice = '1.0-rc7'
+    appcompat = '1.1.0'
+    support_v4 = '1.0.0'
+    android_core = '1.2.0'
+    google_sso = '18.0.0'
+    retrofit = '2.9.0'
+    room = '2.2.5'
+    http_interceptor = '4.2.1'
+
+    ext.androidDependencies = [
+            compile_sdk_version: 29,
+            target_sdk_version : 29,
+            min_sdk_version    : 21
+    ]
+
+    room = [
+            room_runtime   : "androidx.room:room-runtime:$room",
+            room_compiler  : "androidx.room:room-compiler:$room",
+            room_coroutines: "androidx.room:room-ktx:$room"
+    ]
+
+    retrofit = [
+            retrofit    : "com.squareup.retrofit2:retrofit:$retrofit",
+            converter   : "com.squareup.retrofit2:converter-gson:$retrofit",
+            http_logging: "com.squareup.okhttp3:logging-interceptor:$http_interceptor"
+    ]
+
+    play = [
+            core: "com.google.android.play:core:$play"
+    ]
+
+    kotlin = [
+            stdlib: "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin"
+    ]
+
+    lifecycle = [
+            viewmodel   : "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle",
+            viewmodelext: "androidx.lifecycle:lifecycle-extensions:$lifecycle"
+    ]
+
+    navigation = [
+            fragment: "androidx.navigation:navigation-fragment-ktx:$navigation",
+            ui      : "androidx.navigation:navigation-ui-ktx:$navigation",
+            dynamic : "androidx.navigation:navigation-dynamic-features-fragment:$navigation"
+    ]
+
+    dagger = [
+            core            : "com.google.dagger:dagger:$dagger",
+            android         : "com.google.dagger:dagger-android:$dagger",
+            android_support : "com.google.dagger:dagger-android-support:$dagger",
+            compiler        : "com.google.dagger:dagger-compiler:$dagger",
+            android_compiler: "com.google.dagger:dagger-android-processor:$dagger"
+    ]
+
+    unit_test = [
+            junit : "junit:junit:$junit",
+            runner: "androidx.test:runner:$test_runner"
+    ]
+
+    espresso = [
+            core: "androidx.test.espresso:espresso-core:$espresso"
+    ]
+
+    constraintLayout = [
+            constraintLayout: "androidx.constraintlayout:constraintlayout:$constraintLayout"
+    ]
+
+    material = [
+            material: "com.google.android.material:material:$material"
+    ]
+
+    appcompat = [
+            appcompat : "androidx.appcompat:appcompat:$appcompat",
+            support_v4: "androidx.legacy:legacy-support-v4:$support_v4"
+    ]
+
+    autoservice = [
+            autoservice: "com.google.auto.service:auto-service:$autoservice",
+            annotations: "com.google.auto.service:auto-service-annotations:$autoservice"
+    ]
+
+    core = [
+            ktx: "androidx.core:core-ktx:$android_core"
+    ]
+
+    google = [
+            sso: "com.google.android.gms:play-services-auth:$google_sso"
+    ]
+}

@@ -1,5 +1,6 @@
 package com.pills.mydemoapplication.feature_package
 
+import android.content.Context
 import android.widget.Toast
 import com.google.android.play.core.splitinstall.*
 import com.google.android.play.core.splitinstall.model.SplitInstallSessionStatus
@@ -49,9 +50,9 @@ interface FeatureManager {
     fun unregisterInstallListener(listener: (FeatureName) -> Unit)
 }
 
-internal class FeatureManagerImpl(private val application: BaseApplicationClass) : FeatureManager {
+internal class FeatureManagerImpl(private val applicationClass: BaseApplicationClass) : FeatureManager {
 
-    private val splitInstallManager: SplitInstallManager = SplitInstallManagerFactory.create(application)
+    private val splitInstallManager: SplitInstallManager = SplitInstallManagerFactory.create(applicationClass)
     private val installListeners = mutableListOf<(FeatureName) -> Unit>()
 
     override fun downloadFeature(featureName: FeatureName) {
@@ -65,38 +66,38 @@ internal class FeatureManagerImpl(private val application: BaseApplicationClass)
                     when (state.status()) {
                         SplitInstallSessionStatus.CANCELED -> {
                             splitInstallManager.unregisterListener(this)
-                            Toast.makeText(application, "CANCELED $moduleName = ${state.status()}", Toast.LENGTH_SHORT).show()
+                            Toast.makeText(applicationClass, "CANCELED $moduleName = ${state.status()}", Toast.LENGTH_SHORT).show()
                         }
                         SplitInstallSessionStatus.CANCELING -> {
-                            Toast.makeText(application, "CANCELING $moduleName = ${state.status()}", Toast.LENGTH_SHORT).show()
+                            Toast.makeText(applicationClass, "CANCELING $moduleName = ${state.status()}", Toast.LENGTH_SHORT).show()
                         }
                         SplitInstallSessionStatus.DOWNLOADED -> {
-                            Toast.makeText(application, "DOWNLOADED $moduleName = ${state.status()}", Toast.LENGTH_SHORT).show()
+                            Toast.makeText(applicationClass, "DOWNLOADED $moduleName = ${state.status()}", Toast.LENGTH_SHORT).show()
                         }
                         SplitInstallSessionStatus.DOWNLOADING -> {
-                            Toast.makeText(application, "DOWNLOADING $moduleName = ${state.status()}", Toast.LENGTH_SHORT).show()
+                            Toast.makeText(applicationClass, "DOWNLOADING $moduleName = ${state.status()}", Toast.LENGTH_SHORT).show()
                         }
                         SplitInstallSessionStatus.FAILED -> {
                             splitInstallManager.unregisterListener(this)
-                            Toast.makeText(application, "FAILED $moduleName = ${state.status()}", Toast.LENGTH_SHORT).show()
+                            Toast.makeText(applicationClass, "FAILED $moduleName = ${state.status()}", Toast.LENGTH_SHORT).show()
                         }
                         SplitInstallSessionStatus.INSTALLED -> {
                             splitInstallManager.unregisterListener(this)
                             installListeners.forEach { listener -> listener(featureName) }
-                            Toast.makeText(application, "INSTALLED $moduleName = ${state.status()}", Toast.LENGTH_SHORT).show()
+                            Toast.makeText(applicationClass, "INSTALLED $moduleName = ${state.status()}", Toast.LENGTH_SHORT).show()
                         }
                         SplitInstallSessionStatus.INSTALLING -> {
-                            Toast.makeText(application, "INSTALLING $moduleName = ${state.status()}", Toast.LENGTH_SHORT).show()
+                            Toast.makeText(applicationClass, "INSTALLING $moduleName = ${state.status()}", Toast.LENGTH_SHORT).show()
                         }
                         SplitInstallSessionStatus.PENDING -> {
-                            Toast.makeText(application, "PENDING $moduleName = ${state.status()}", Toast.LENGTH_SHORT).show()
+                            Toast.makeText(applicationClass, "PENDING $moduleName = ${state.status()}", Toast.LENGTH_SHORT).show()
                         }
                         SplitInstallSessionStatus.REQUIRES_USER_CONFIRMATION -> {
-                            Toast.makeText(application, "REQUIRES_USER_CONFIRMATION $moduleName = ${state.status()}", Toast.LENGTH_SHORT).show()
+                            Toast.makeText(applicationClass, "REQUIRES_USER_CONFIRMATION $moduleName = ${state.status()}", Toast.LENGTH_SHORT).show()
                         }
                         SplitInstallSessionStatus.UNKNOWN -> {
                             splitInstallManager.unregisterListener(this)
-                            Toast.makeText(application, "UNKNOWN $moduleName = ${state.status()}", Toast.LENGTH_SHORT).show()
+                            Toast.makeText(applicationClass, "UNKNOWN $moduleName = ${state.status()}", Toast.LENGTH_SHORT).show()
                         }
                     }
                 }

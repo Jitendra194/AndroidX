@@ -1,12 +1,11 @@
 package com.pills.mydemoapplication.views.hq
 
+import android.content.SharedPreferences
 import androidx.lifecycle.ViewModel
-import com.pills.mydemoapplication.feature_package.FeatureName.PillsFeature
-import com.pills.mydemoapplication.feature_package.FeatureName.LabReportsFeature
-import com.pills.mydemoapplication.feature_package.FeatureName.PrescriptionsFeature
-import com.pills.mydemoapplication.feature_package.FeatureName.WellnessTipsFeature
-import com.pills.mydemoapplication.feature_package.FeatureName.HomeFeature
-import com.pills.mydemoapplication.feature_package.*
+import com.pills.mydemoapplication.feature_package.FeatureManager
+import com.pills.mydemoapplication.feature_package.FeatureName.*
+import com.pills.mydemoapplication.feature_package.getFeature
+import com.pills.mydemoapplication.repository.SessionManager.Companion.AUTH_TOKEN
 import javax.inject.Inject
 
 class HQViewModel @Inject constructor(private val featureManager: FeatureManager) : ViewModel() {

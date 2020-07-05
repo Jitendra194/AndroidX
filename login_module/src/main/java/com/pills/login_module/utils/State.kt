@@ -1,6 +1,6 @@
 package com.pills.login_module.utils
 
-enum class LoginState {
+enum class State {
     SUCCESS,
     FAILURE,
 }

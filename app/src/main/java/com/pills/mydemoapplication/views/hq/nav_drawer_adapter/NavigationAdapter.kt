@@ -7,7 +7,6 @@ import androidx.recyclerview.widget.ListAdapter
 import com.pills.mydemoapplication.R
 
 private const val VIEW_TYPE_NAV_MENU_ITEM = 4
-private const val VIEW_TYPE_NAV_SIGN_OUT_ITEM = 6
 private const val VIEW_TYPE_NAV_DIVIDER = 7
 
 class NavigationAdapter(private val listener: NavigationAdapterListener) : ListAdapter<NavigationModelItem, NavigationViewHolder<NavigationModelItem>>(NavigationModelItem.NavigationModelItemDiff) {

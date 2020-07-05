@@ -4,10 +4,12 @@ import com.pills.login_module.di.modules.LoginModule
 import com.pills.login_module.di.modules.viewmodel_providers.CreateAccountViewModelProviderModule
 import com.pills.login_module.di.modules.viewmodel_providers.EnterUserDetailsViewModelProviderModule
 import com.pills.login_module.di.modules.viewmodel_providers.LoginViewModelProviderModule
+import com.pills.login_module.di.modules.viewmodel_providers.PhoneNumberExtraViewModelProviderModule
 import com.pills.login_module.di.scopes.LoginScope
 import com.pills.login_module.views.create_account.CreateAccountMethodFragment
 import com.pills.login_module.views.google_extra.EnterUserDetailsFragment
 import com.pills.login_module.views.login.LoginFragment
+import com.pills.login_module.views.number_extra.PhoneNumberExtraFragment
 import dagger.BindsInstance
 import dagger.Subcomponent
 import dagger.android.AndroidInjectionModule
@@ -32,4 +34,11 @@ interface CreateAccountComponent : AndroidInjector<CreateAccountMethodFragment> 
 interface GoogleUserDetailsComponent : AndroidInjector<EnterUserDetailsFragment> {
     @Subcomponent.Factory
     interface Factory { fun create(@BindsInstance enterUserDetailsFragment: EnterUserDetailsFragment): GoogleUserDetailsComponent }
+}
+
+@LoginScope
+@Subcomponent(modules = [AndroidInjectionModule::class, PhoneNumberExtraViewModelProviderModule::class, LoginModule::class])
+interface PhoneExtraUserDetailsComponent : AndroidInjector<PhoneNumberExtraFragment> {
+    @Subcomponent.Factory
+    interface Factory { fun create(@BindsInstance phoneNumberExtraFragment: PhoneNumberExtraFragment): PhoneExtraUserDetailsComponent }
 }

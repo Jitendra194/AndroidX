@@ -6,10 +6,8 @@ import androidx.databinding.ObservableField
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.google.android.gms.auth.api.signin.GoogleSignInAccount
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
-import com.google.android.gms.common.api.ApiException
-import com.google.android.gms.tasks.Task
+import com.pills.login_module.repository.models.UserDataRequest
 import com.pills.login_module.utils.CreateAccountValidationErrorUtil
 import javax.inject.Inject
 
@@ -33,6 +31,8 @@ class CreateAccountMethodViewModel @Inject constructor(
         get() = _buttonState.apply {
             value = !firstName.get().isNullOrBlank() && !lastName.get().isNullOrBlank() && !mobileNumber.get().isNullOrBlank() && !password.get().isNullOrBlank() && !emailError.get()
         }
+
+    fun getUserRequestData() = UserDataRequest(firstName.get(), lastName.get(), email.get(), mobileNumber.get(), null, null)
 
     fun getGoogleSignInIntent(): Intent = mGoogleSignInClient.signInIntent
 

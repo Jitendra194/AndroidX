@@ -21,7 +21,7 @@ fun MaterialDatePicker.Builder<Long>.setupDOBCalendar(): MaterialDatePicker<Long
 }
 
 @SuppressLint("SimpleDateFormat")
-fun Long.convertToDateString(): String = SimpleDateFormat("dd/MM/yyyy").run {
+fun Long.convertToDateString(): String = SimpleDateFormat("yyyy-MM-dd").run {
     timeZone = TimeZone.getTimeZone("UTC")
     format(this@convertToDateString)
 }

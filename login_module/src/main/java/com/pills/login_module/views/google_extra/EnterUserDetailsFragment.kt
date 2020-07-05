@@ -49,8 +49,8 @@ class EnterUserDetailsFragment : Fragment(), HasAndroidInjector {
             root
     }
 
-    override fun onStart() {
-        super.onStart()
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
         userDetailsViewModel.apply {
             setArgsInViewModel(args.GivenName)
             enter_details_gender_field.setAdapter(arrayAdapter)

@@ -22,5 +22,6 @@ class LaunchActivity : DaggerAppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.launch_activity)
         viewModel.launchLoginFragment()
+        viewModel.fetchAccessToken()
     }
 }

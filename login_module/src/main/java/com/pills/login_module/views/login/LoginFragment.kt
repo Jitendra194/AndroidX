@@ -16,8 +16,8 @@ import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.pills.login_module.R
 import com.pills.login_module.databinding.LoginFragmentBinding
 import com.pills.login_module.featureImpl.loginFeatureMainComponent
-import com.pills.login_module.utils.LoginState
-import com.pills.login_module.utils.LoginState.*
+import com.pills.login_module.utils.State
+import com.pills.login_module.utils.State.*
 import com.pills.login_module.utils.RC_SIGN_IN
 import com.pills.login_module.utils.handleSignInResult
 import com.pills.mydemoapplication.di.viewmodel_factory.ViewModelProviderFactory
@@ -61,10 +61,10 @@ class LoginFragment : Fragment(), HasAndroidInjector {
     }
 
     private fun observeViewModel() = loginViewModel.apply {
-        launchLogin.observe(viewLifecycleOwner) { it?.let { setupLoginState(it) } }
+        launch.observe(viewLifecycleOwner) { it?.let { setupLoginState(it) } }
     }
 
-    private fun setupLoginState(loginState: LoginState) = when(loginState) {
+    private fun setupLoginState(state: State) = when(state) {
         SUCCESS -> loginSuccess()
         FAILURE -> loginFailure()
     }

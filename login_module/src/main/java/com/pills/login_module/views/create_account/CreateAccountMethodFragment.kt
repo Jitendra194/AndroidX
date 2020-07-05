@@ -21,7 +21,6 @@ import com.pills.mydemoapplication.di.viewmodel_factory.ViewModelProviderFactory
 import dagger.android.AndroidInjector
 import dagger.android.DispatchingAndroidInjector
 import dagger.android.HasAndroidInjector
-import dagger.android.support.DaggerFragment
 import kotlinx.android.synthetic.main.fragment_create_account_method.*
 import javax.inject.Inject
 
@@ -52,8 +51,8 @@ class CreateAccountMethodFragment : Fragment(), HasAndroidInjector {
         binding.root
     }
 
-    override fun onResume() {
-        super.onResume()
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
         setUpUserActions()
     }
 
@@ -68,9 +67,10 @@ class CreateAccountMethodFragment : Fragment(), HasAndroidInjector {
         }
     }
 
-    private fun setUpUserActions() {
-        sign_in_button.setOnClickListener {
-            startActivityForResult(createAccountMethodViewModel.getGoogleSignInIntent(), RC_SIGN_IN)
+    private fun setUpUserActions() = createAccountMethodViewModel.apply {
+        sign_in_button.setOnClickListener { startActivityForResult(createAccountMethodViewModel.getGoogleSignInIntent(), RC_SIGN_IN) }
+        create_account_method_next_button.setOnClickListener {
+            findNavController().navigate(CreateAccountMethodFragmentDirections.actionCreateAccountMethodFragmentToPhoneNumberExtraFragment(getUserRequestData()))
         }
     }
 
