@@ -17,7 +17,7 @@ class SessionManager(
         private const val CLIENT_ID = "3MVG96hCAx1bhPahgH3cGLf4BfzkC1XPQuytKXoecF01Zj9NwdG77ukpFp4YRgX.83QN6Wf8I2Pch5qzxgIGe"
         private const val CLIENT_SECRET = "000B8B2E721074BF9FE6AE128E2BEC5163448CB174C5F3A530B017E5EAD1A8A2"
         private const val USERNAME = "rohittatineni@popill.com"
-        private const val PASSWORD = "Willgetthere2022wLyKosWivgrbpdidkcLvN5CYE"
+        private const val PASSWORD = "Popill2020EuzPuJavTggCk3Oj6khC2SotM"
     }
 
     suspend fun getAccessToken(): String = tokenService.fetchAuthToken(GRANT_TYPE, CLIENT_ID, CLIENT_SECRET, USERNAME, PASSWORD).run {
